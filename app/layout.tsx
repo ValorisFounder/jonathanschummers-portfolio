@@ -33,6 +33,13 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${manrope.variable} h-full antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var d=document.documentElement,t=localStorage.getItem('theme'),p=matchMedia('(prefers-color-scheme:dark)').matches;if(t==='dark'||(t==null&&p)){d.classList.add('dark')}else if(t==='light'){d.classList.add('light')}}catch(e){}})()`,
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
