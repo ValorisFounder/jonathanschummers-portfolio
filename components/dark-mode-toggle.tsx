@@ -31,8 +31,8 @@ export function DarkModeToggle({ className }: { className?: string }) {
       aria-label={dark ? "Activer le mode clair" : "Activer le mode sombre"}
       className={cn(
         "p-xs",
-        "text-fg transition-colors duration-[var(--dur-fast)] ease-out",
-        "[@media(hover:hover){&:hover}]:text-muted",
+        "text-text-primary transition-colors duration-[var(--dur-fast)] ease-out",
+        "[@media(hover:hover){&:hover}]:text-text-secondary",
         className
       )}
     >

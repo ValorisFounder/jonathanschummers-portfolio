@@ -202,7 +202,7 @@ Outside of work, I'm a cycling obsessive. After 8 years playing fantasy cycling 
 **Sous-texte** : Disponibilite actuelle (ex: "Available for freelance projects starting May 2026")
 
 **Actions** :
-- Bouton primary "Book a call" → lien Calendly
+- Bouton primary "Book a call" → https://calendly.com/jonathan-schummers/discovery-call
 - Email affiche en clair (cliquable mailto)
 - Icone LinkedIn (lien)
 
@@ -268,7 +268,7 @@ Par rapport a la spec design system (`2026-03-20-design-system-design.md`) :
 - [ ] Nouvelle photo hero de Jonathan (`/public/images/Hero/Moi.webp` = placeholder)
 - [ ] Image projet Valoris
 - [ ] 2 screenshots mobile WattHunter pour la section About
-- [ ] Lien Calendly pour la section CTA
+- [x] Lien Calendly pour la section CTA — https://calendly.com/jonathan-schummers/discovery-call
 - [ ] Case study Malaama (contenu)
 - [ ] Eventuels temoignages supplementaires
 

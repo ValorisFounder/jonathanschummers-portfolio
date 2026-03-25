@@ -14,8 +14,8 @@ export function Tag({
         "border border-border-strong",
         "rounded-pill",
         "px-[10px] py-[4px]",
-        "font-body font-semibold text-[11px] uppercase tracking-[0.08em]",
-        "text-muted",
+        "font-body font-semibold text-label uppercase tracking-label",
+        "text-text-secondary",
         className
       )}
     >

@@ -14,17 +14,29 @@
 
 /* --- Light mode (default) --- */
 :root {
-  /* Semantic colors */
-  --sem-bg: #fafafa;
+  /* Semantic colors — text */
+  --sem-text-primary: #18181b;    /* zinc-900 */
+  --sem-text-secondary: #71717b;  /* zinc-500 */
+  --sem-text-tertiary: #9f9fa9;   /* zinc-400 */
+
+  /* Semantic colors — backgrounds */
+  --sem-bg: #fafafa;              /* zinc-50 */
+  --sem-surface: #f4f4f5;         /* zinc-100 */
+  --sem-border: #e4e4e7;          /* zinc-200 */
+  --sem-border-strong: #d4d4d8;   /* zinc-300 */
+  --sem-invert-bg: #18181b;       /* zinc-900 */
+  --sem-invert-fg: #fafafa;       /* zinc-50 */
+
+  /* Semantic colors — button primary */
+  --sem-btn-primary: #1e1e21;     /* zinc-850 (custom) */
+  --sem-btn-primary-hover: #09090b; /* zinc-950 */
+  --sem-btn-primary-fg: #fafafa;  /* zinc-50 */
+
+  /* Legacy aliases (keep for compatibility during migration) */
   --sem-fg: #18181b;
   --sem-muted: #52525c;
   --sem-subtle: #71717b;
   --sem-faint: #9f9fa9;
-  --sem-border: #e4e4e7;
-  --sem-border-strong: #d4d4d8;
-  --sem-surface: #f4f4f5;
-  --sem-invert-bg: #18181b;
-  --sem-invert-fg: #fafafa;
 
   /* Accent */
   --sem-accent-subtle: #d4e3ff;
@@ -57,20 +69,73 @@
   /* Disabled */
   --sem-disabled-bg: #e4e4e7;
   --sem-disabled-fg: #9f9fa9;
+
+  /* Typography scale — Desktop (>1024px) defaults */
+  --sem-text-hero: 56px;
+  --sem-text-h1: 48px;
+  --sem-text-h2: 32px;
+  --sem-text-h3: 24px;
+  --sem-text-h4: 18px;
+  --sem-text-body-lg: 18px;
+  --sem-text-body: 16px;
+  --sem-text-body-sm: 14px;
+  --sem-text-label: 12px;
+
+  /* Typography leading */
+  --sem-leading-hero: 0.92;
+  --sem-leading-h1: 1.1;
+  --sem-leading-h2: 1.2;
+  --sem-leading-h3: 1.3;
+  --sem-leading-body: 1.65;
+  --sem-leading-body-sm: 1.5;
+
+  /* Typography tracking */
+  --sem-tracking-hero: -0.03em;
+  --sem-tracking-h2: -0.02em;
+  --sem-tracking-h3: -0.01em;
+  --sem-tracking-label: 0.08em;
+}
+
+/* --- Responsive typography — Tablet --- */
+@media (max-width: 1024px) {
+  :root {
+    --sem-text-hero: 48px;
+    --sem-text-h1: 40px;
+    --sem-text-h2: 28px;
+    --sem-text-h3: 22px;
+  }
+}
+
+/* --- Responsive typography — Mobile --- */
+@media (max-width: 767px) {
+  :root {
+    --sem-text-hero: 40px;
+    --sem-text-h1: 36px;
+    --sem-text-h2: 24px;
+    --sem-text-h3: 20px;
+    --sem-text-body-lg: 16px;
+  }
 }
 
 /* --- Dark mode --- */
 .dark {
-  --sem-bg: #09090b;
-  --sem-fg: #e4e4e7;
-  --sem-muted: #9f9fa9;
-  --sem-subtle: #71717b;
-  --sem-faint: #52525c;
-  --sem-border: #3f3f47;
-  --sem-border-strong: #52525c;
-  --sem-surface: #27272a;
+  /* Text */
+  --sem-text-primary: #e4e4e7;    /* zinc-200 */
+  --sem-text-secondary: #9f9fa9;  /* zinc-400 */
+  --sem-text-tertiary: #71717b;   /* zinc-500 */
+
+  /* Backgrounds */
+  --sem-bg: #09090b;              /* zinc-950 */
+  --sem-surface: #27272a;         /* zinc-800 */
+  --sem-border: #3f3f47;          /* zinc-700 */
+  --sem-border-strong: #52525c;   /* zinc-600 */
   --sem-invert-bg: #fafafa;
   --sem-invert-fg: #18181b;
+
+  /* Button primary */
+  --sem-btn-primary: #ececee;     /* zinc-150 (custom) */
+  --sem-btn-primary-hover: #fafafa; /* zinc-50 */
+  --sem-btn-primary-fg: #09090b;  /* zinc-950 */
 
   /* Accent — adjusted for contrast on dark bg */
   --sem-accent-text: #6d9dfa;
@@ -82,20 +147,28 @@
   /* Disabled */
   --sem-disabled-bg: #3f3f47;
   --sem-disabled-fg: #52525c;
+
+  /* Legacy aliases */
+  --sem-fg: #e4e4e7;
+  --sem-muted: #9f9fa9;
+  --sem-subtle: #71717b;
+  --sem-faint: #52525c;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not(.light) {
+    --sem-text-primary: #e4e4e7;
+    --sem-text-secondary: #9f9fa9;
+    --sem-text-tertiary: #71717b;
     --sem-bg: #09090b;
-    --sem-fg: #e4e4e7;
-    --sem-muted: #9f9fa9;
-    --sem-subtle: #71717b;
-    --sem-faint: #52525c;
+    --sem-surface: #27272a;
     --sem-border: #3f3f47;
     --sem-border-strong: #52525c;
-    --sem-surface: #27272a;
     --sem-invert-bg: #fafafa;
     --sem-invert-fg: #18181b;
+    --sem-btn-primary: #ececee;
+    --sem-btn-primary-hover: #fafafa;
+    --sem-btn-primary-fg: #09090b;
     --sem-accent-text: #6d9dfa;
     --sem-accent: #0A4CF0;
     --sem-accent-hover: #0839b8;
@@ -103,6 +176,10 @@
     --sem-accent-muted: #3670f5;
     --sem-disabled-bg: #3f3f47;
     --sem-disabled-fg: #52525c;
+    --sem-fg: #e4e4e7;
+    --sem-muted: #9f9fa9;
+    --sem-subtle: #71717b;
+    --sem-faint: #52525c;
   }
 }
 
@@ -111,6 +188,12 @@
   /* Colors → generates bg-*, text-*, border-* utilities */
   --color-bg: var(--sem-bg);
   --color-fg: var(--sem-fg);
+  --color-text-primary: var(--sem-text-primary);
+  --color-text-secondary: var(--sem-text-secondary);
+  --color-text-tertiary: var(--sem-text-tertiary);
+  --color-btn-primary: var(--sem-btn-primary);
+  --color-btn-primary-hover: var(--sem-btn-primary-hover);
+  --color-btn-primary-fg: var(--sem-btn-primary-fg);
   --color-muted: var(--sem-muted);
   --color-subtle: var(--sem-subtle);
   --color-faint: var(--sem-faint);
@@ -145,6 +228,7 @@
   /* Fonts */
   --font-display: var(--font-space-grotesk);
   --font-body: var(--font-manrope);
+
 }
 
 /* --- Reduced motion --- */
@@ -184,6 +268,39 @@ button:focus-visible {
     filter: grayscale(0);
   }
 }
+
+/* --- Subtle hover for project cards (spec: homepage section 11.1) --- */
+.hover-subtle {
+  transition: background-color var(--dur-base) var(--ease-default);
+}
+@media (hover: hover) {
+  .hover-subtle:hover {
+    background-color: var(--sem-surface);
+  }
+}
+
+/* --- Typography utilities (responsive via CSS vars) --- */
+.text-hero { font-size: var(--sem-text-hero); }
+.text-h1 { font-size: var(--sem-text-h1); }
+.text-h2 { font-size: var(--sem-text-h2); }
+.text-h3 { font-size: var(--sem-text-h3); }
+.text-h4 { font-size: var(--sem-text-h4); }
+.text-body-lg { font-size: var(--sem-text-body-lg); }
+.text-body { font-size: var(--sem-text-body); }
+.text-body-sm { font-size: var(--sem-text-body-sm); }
+.text-label { font-size: var(--sem-text-label); }
+
+.leading-hero { line-height: var(--sem-leading-hero); }
+.leading-h1 { line-height: var(--sem-leading-h1); }
+.leading-h2 { line-height: var(--sem-leading-h2); }
+.leading-h3 { line-height: var(--sem-leading-h3); }
+.leading-body { line-height: var(--sem-leading-body); }
+.leading-body-sm { line-height: var(--sem-leading-body-sm); }
+
+.tracking-hero { letter-spacing: var(--sem-tracking-hero); }
+.tracking-h2 { letter-spacing: var(--sem-tracking-h2); }
+.tracking-h3 { letter-spacing: var(--sem-tracking-h3); }
+.tracking-label { letter-spacing: var(--sem-tracking-label); }
 
 /* --- Base styles --- */
 body {

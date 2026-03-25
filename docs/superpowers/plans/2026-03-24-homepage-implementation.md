@@ -845,7 +845,7 @@ export function CtaFinal() {
           Available for freelance projects starting May 2026
         </p>
         <div className="mt-lg flex flex-wrap items-center gap-md">
-          <Button href="#">Book a call</Button>
+          <Button href="https://calendly.com/jonathan-schummers/discovery-call">Book a call</Button>
           <a
             href="mailto:jonathan@example.com"
             className="font-body text-[14px] text-fg underline underline-offset-[3px] transition-colors duration-[var(--dur-fast)] ease-out [@media(hover:hover){&:hover}]:text-muted"

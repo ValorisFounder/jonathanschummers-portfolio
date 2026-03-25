@@ -19,7 +19,7 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: "Jonathan Schummers — Product Designer",
   description:
-    "Portfolio de Jonathan Schummers, Product Designer freelance basé à Paris.",
+    "Jonathan Schummers — Senior Product Designer. Research, design, and code.",
 };
 
 export default function RootLayout({
@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="fr"
+      lang="en"
       className={`${spaceGrotesk.variable} ${manrope.variable} h-full antialiased`}
       suppressHydrationWarning
     >

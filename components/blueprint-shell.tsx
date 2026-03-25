@@ -24,13 +24,16 @@ export function Section({
   children,
   className,
   invert = false,
+  id,
 }: {
   children: React.ReactNode;
   className?: string;
   invert?: boolean;
+  id?: string;
 }) {
   return (
     <section
+      id={id}
       className={cn(
         "border-b border-border",
         "px-xl py-xl",

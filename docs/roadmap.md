@@ -3,8 +3,8 @@
 > Ouvre ce fichier pour voir l'avancement global du projet.
 > Mis a jour au fur et a mesure des sessions.
 
-**Objectif** : Site portfolio operationnel en 2 jours
-**Stack** : Next.js 16 + Tailwind CSS + shadcn/ui + Framer Motion
+**Objectif** : Site portfolio operationnel
+**Stack** : Next.js 16 + Tailwind CSS v4 + Heroicons + Space Grotesk + Manrope
 **Approche** : Section-by-section avec wireframes
 
 ---
@@ -12,34 +12,43 @@
 ## Jour 1 : Fondations + Homepage
 
 ### Etape 1 — Sitemap & IA (30min) ✅
-- [x] Architecture : 5 pages + 5 case studies
+- [x] Architecture : single-page homepage + case studies
 - [x] Sections de chaque page definies
 - [x] URL structure App Router
 
-**Sitemap validee :**
+**Architecture validee :**
 ```
-/                    Homepage (hero, 2-3 projets featured, metrics, about teaser, CTA)
-/work                Listing complet des 5 projets
-/work/[slug]         Case study Impact-First (nod, bforbank, smartintegrity, boosted, spie-bat)
-/about               Bio, photo, parcours, philosophy
-/contact             CTA, email, liens sociaux, statut dispo
+/                    Homepage (toutes les sections)
+/work/[slug]         Case study (nod, valoris, bforbank, spie-bat, smartintegrity, malaama)
 ```
-**Nav** : Work · About · Contact + CTA persistant
 
 ### Etape 2 — Direction visuelle & Design System (2-3h) ✅
 - [x] Explorer 2-3 directions visuelles (visual companion)
-- [x] Choisir typographie, palette, spacing, shadows, animations
-- [x] Implementer en CSS variables + Tailwind config
-- [x] Creer composants de base (Button, Tag, BlueprintShell, DarkModeToggle)
+- [x] Choisir typographie, palette, spacing, animations
+- [x] Implementer en CSS variables + Tailwind v4 @theme
+- [x] Creer composants de base (Button, Tag, BlueprintShell, Section, DarkModeToggle)
+- [x] Definir echelle typographique responsive (hero → h1 → h2 → h3 → h4 → body-lg → body → body-sm → label)
+- [x] Definir tokens texte semantiques (text-primary, text-secondary, text-tertiary)
+- [x] Definir tokens bouton (btn-primary, btn-primary-hover, btn-primary-fg) avec etats default/hover/pressed
+- [x] Card hover subtil (surface au lieu de border)
+- [x] Ghost/liens hover (text-secondary → text-primary)
+- [x] Integrer Heroicons comme bibliotheque d'icones
 
-### Etape 3 — Homepage section par section (4-5h)
-Pour chaque section : wireframe → choix → implementation → validation
+### Etape 3 — Homepage section par section ✅
+- [x] Nav (sticky, hamburger mobile, dark mode toggle)
+- [x] Hero (titre, tagline, photo, CTA)
+- [x] Projets featured (3 cartes avec images, metriques, tags)
+- [x] Projets compacts (3 rangees texte, "See all projects")
+- [x] Temoignages (bande inversee, Sandie Blanchaud)
+- [x] About (parcours + WattHunter)
+- [x] CTA Contact (Calendly, email, LinkedIn)
+- [x] Footer (nav + socials + copyright)
 
-- [ ] Hero
-- [ ] Projets featured (grille/liste)
-- [ ] Metrics / Impact
-- [ ] About teaser
-- [ ] CTA Contact
+**En cours / A finaliser :**
+- [ ] Photo hero : Jonathan doit reexporter sans transparence (alpha)
+- [ ] Valider la hero section visuellement (tailles, spacings, photo)
+- [ ] Screenshots WattHunter pour section About
+- [ ] Image projet Valoris
 
 ---
 
@@ -50,57 +59,38 @@ Pour chaque section : wireframe → choix → implementation → validation
 - [ ] Implementation : Hero, TL;DR, Context, Process, Solution, Impact, Reflections
 - [ ] Validation sur 1er case study
 
-### Etape 5 — 4 case studies restants (3-4h)
-- [ ] BforBank
+### Etape 5 — Case studies (3-4h)
 - [ ] NOD
-- [ ] SmartIntegrity
-- [ ] Boosted
+- [ ] Valoris
+- [ ] BforBank
 - [ ] Spie Batignolles
+- [ ] SmartIntegrity
+- [ ] Malaama
 
-### Etape 6 — Pages About + Contact (1.5h)
-- [ ] About : bio, photo, parcours, philosophy
-- [ ] Contact : CTA, email, liens sociaux, statut dispo
-
-### Etape 7 — QA & Polish (1.5h)
-- [ ] Re-tester les polices (Sora, Manrope) avec le contenu reel — valider lisibilite et hierarchie
-- [ ] Evaluer si JetBrains Mono apporte quelque chose pour les tags/labels techniques (optionnel, pas dans le design system de base)
+### Etape 6 — QA & Polish (1.5h)
 - [ ] Responsive (375px, 768px, 1440px)
 - [ ] Lighthouse (Perf >90, A11y >95, SEO >95)
-- [ ] Animations, transitions, hover states
+- [ ] Hover states sur tous les composants interactifs
 - [ ] Verification liens, images, typos
+- [ ] Dark mode complet
 
-### Etape 8 — Deploy (30min)
+### Etape 7 — Deploy (30min)
 - [ ] Vercel deploy
-- [ ] Domaine custom (si pret)
+- [ ] Domaine custom
 - [ ] Analytics + Speed Insights
 
 ---
-
-## Structure du repo
-
-```
-portfolio/               <- racine du projet Next.js
-├── app/                 <- pages (App Router)
-├── components/          <- composants React
-├── content/
-│   ├── homepage.md
-│   └── case-studies/    <- 5 fichiers MD
-├── docs/
-│   ├── roadmap.md       <- CE FICHIER
-│   ├── references/      <- recherche, process, anciennes versions
-│   └── specs/           <- specs de design (outputs brainstorm)
-├── lib/                 <- utilitaires
-├── public/images/       <- toutes les images
-└── ...
-```
 
 ## Decisions prises
 
 | Decision | Choix | Raison |
 |----------|-------|--------|
-| Scope | 5 pages + 5 case studies detailles | Option C — homepage featured + /work listing |
-| Services | Mis de cote | Le brief dit que c'est pour les agences, pas les individus |
-| Approche | Section-by-section avec wireframes | Iteratif, validation a chaque etape |
-| Direction visuelle | Nouvelle direction a explorer | Ni V15 ni V-ref — a definir en etape 2 |
-| Contenu | Existant, a reformater Impact-First | Docs deja dans content/case-studies/ |
-| Timeline | 2 jours | J1 = fondations + homepage, J2 = case studies + deploy |
+| Architecture | Single-page + case studies | Pas assez de contenu pour About/Contact separes |
+| Langue | Anglais | Marche international, startups |
+| Polices | Space Grotesk (display) + Manrope (body) | |
+| Icones | Heroicons (@heroicons/react) + custom LinkedIn/GitHub | Bibliotheque Tailwind Labs, coherente |
+| Tokens texte | text-primary (zinc-900), text-secondary (zinc-500), text-tertiary (zinc-400) | 3 niveaux, inspire de Radix (steps 11-12) |
+| Bouton primary | zinc-850 default → zinc-950 hover → brightness(1.08) pressed | Approche Radix (step 9 → 10 → filtre) |
+| Card hover | surface (zinc-100) | Subtil, Radix step 4 |
+| Ghost hover | text-secondary → text-primary | Pas de bg, evite le padding visuel |
+| Hover projection | bg surface (zinc-100) pour outline, border (zinc-200) pour pressed | |
