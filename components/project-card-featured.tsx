@@ -4,61 +4,81 @@ import { Button } from "@/components/button";
 import { ArrowRightIcon } from "@heroicons/react/16/solid";
 import type { Project } from "@/lib/data";
 
-export function ProjectCardFeatured({
-  project,
-}: {
-  project: Project;
-}) {
+export function ProjectCardFeatured({ project }: { project: Project }) {
   return (
     <a
       href={`/work/${project.slug}`}
       className="hover-subtle block border-b border-border"
     >
-      <div className="h-[600px] overflow-hidden">
-        {/* Tags row — full width, top */}
-        <div className="flex flex-wrap gap-sm px-xl pt-xl max-md:px-md md:max-lg:px-lg">
-          {project.tags.map((tag) => (
-            <Tag key={tag}>{tag}</Tag>
-          ))}
-        </div>
+      {/* Desktop: 2-col grid | Mobile: single column flex */}
+      <div className="md:h-[560px] overflow-hidden">
+        <div className="max-md:flex max-md:flex-col md:grid md:grid-cols-2">
 
-        {/* Two-column content — tags to content gap = 48px */}
-        <div className="grid md:grid-cols-2 mt-xl px-xl max-md:px-md md:max-lg:px-lg">
-          {/* Text column */}
-          <div className="flex flex-col">
-            {project.company && (
-              <p className="font-body text-label font-semibold uppercase tracking-label text-text-secondary">
-                {project.company}
-              </p>
+          {/* Text column — on desktop contains everything, on mobile only company+title+image+tags */}
+          <div className="flex flex-col gap-md pt-xl2 pb-xl2 px-xl max-md:px-md max-md:pt-md max-md:pb-lg md:max-lg:px-lg">
+
+            {/* Company + Title */}
+            <div className="flex flex-col gap-xs">
+              {project.company && (
+                <p className="font-body text-label font-bold uppercase tracking-label text-text-secondary">
+                  {project.company}
+                </p>
+              )}
+              <h2 className="font-display text-h2 font-bold tracking-h2 leading-h2 text-text-primary">
+                {project.title}
+              </h2>
+            </div>
+
+            {/* Image — inline on mobile (between title and tags) */}
+            {project.image && (
+              <div className="relative h-[240px] overflow-hidden md:hidden">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={640}
+                  height={400}
+                  className="object-cover object-top w-full h-full"
+                />
+              </div>
             )}
-            <h2 className="mt-xs font-display text-h2 font-bold tracking-h2 leading-h2 text-text-primary">
-              {project.title}
-            </h2>
+
+            {/* Tags */}
+            <div className="flex flex-wrap gap-sm">
+              {project.tags.map((tag) => (
+                <Tag key={tag}>{tag}</Tag>
+              ))}
+            </div>
+
+            {/* Divider, Description, CTA — desktop only */}
+            <hr className="w-1/2 border-t border-border m-0 max-md:hidden" />
+
             {project.description && (
-              <p className="mt-md font-body text-body leading-body text-text-secondary max-w-[500px]">
+              <p className="font-body text-body leading-body text-text-secondary max-w-[500px] max-md:hidden">
                 {project.description}
               </p>
             )}
-            <div className="mt-lg">
-              <Button variant="outline" size="default">
+
+            <div className="max-md:hidden">
+              <Button variant="outline">
                 Read case study
                 <ArrowRightIcon className="ml-xs size-3.5" />
               </Button>
             </div>
           </div>
 
-          {/* Image column — aligned with company label, overflows at bottom */}
+          {/* Image column — desktop only */}
           {project.image && (
-            <div className="relative overflow-visible max-md:hidden">
+            <div className="relative overflow-hidden pt-xl2 px-xl max-md:hidden">
               <Image
                 src={project.image}
                 alt={project.title}
                 width={640}
-                height={500}
-                className="object-cover object-top"
+                height={755}
+                className="object-cover object-top w-full"
               />
             </div>
           )}
+
         </div>
       </div>
     </a>

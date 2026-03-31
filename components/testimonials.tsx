@@ -1,34 +1,45 @@
-import { Section } from "@/components/blueprint-shell";
+import Image from "next/image";
 
 export function Testimonials() {
   return (
-    <Section invert className="!py-3xl max-md:!py-xl">
-      <blockquote className="max-w-[800px]">
-        <p className="font-body text-body leading-body italic">
-          &ldquo;J&apos;ai eu le plaisir de travailler avec Jonathan dans le
-          cadre de mes fonctions de Lead Design Ops chez TotalEnergies. En tant
-          que Product Designer, tu as démontré ton autonomie sur plusieurs sujets
-          d&apos;une grande complexité technique et stratégique en framing et en
-          build et tu t&apos;es toujours très bien intégré au sein de tes
-          squads. Tu es aussi capable de t&apos;adapter à différents contextes
-          opérationnels. Tu es un collaborateur appliqué, impliqué et à
-          l&apos;écoute des feedbacks. En tant que membre du Design Studio (20
-          designers), tu as toujours été présent dans nos rituels d&apos;équipe
-          et ton caractère jovial et les questions que tu posais participaient
-          grandement à la dynamique d&apos;équipe. Tu as également pris très au
-          sérieux ton rôle de mentor auprès de consultants plus juniors. Pour
-          moi tu as toutes les qualités requises pour poursuivre une belle
-          carrière ! Je te souhaite le meilleur pour la suite :)&rdquo;
-        </p>
-        <footer className="mt-lg">
-          <p className="font-display text-h4 font-bold">
-            Sandie Blanchaud
-          </p>
-          <p className="font-body text-body-sm text-invert-fg/60">
-            Lead Design Ops @ TotalEnergies (The Digital Factory)
-          </p>
-        </footer>
-      </blockquote>
-    </Section>
+    <section className="border-b border-border-strong bg-invert-bg px-xl py-xl2 max-md:px-md max-md:py-xl md:max-lg:px-lg">
+      <p className="font-body text-label font-bold uppercase tracking-label text-text-secondary">
+        Testimonials
+      </p>
+
+      <div className="mt-md flex items-center bg-surface max-md:flex-col max-md:items-stretch">
+        <Image
+          src="/images/Hero/Testimonials/sandie.jpeg"
+          alt="Sandie Blanchaud"
+          width={157}
+          height={191}
+          className="w-[157px] self-stretch object-cover max-md:h-[200px] max-md:w-full max-md:self-auto"
+        />
+
+        <div className="flex flex-col gap-xs px-lg py-md max-md:px-md">
+          <div className="flex flex-wrap items-baseline gap-x-sm gap-y-xs">
+            <span className="font-body text-body-lg font-bold text-text-primary">
+              Sandie Blanchaud
+            </span>
+            <span className="font-body text-body-lg font-semibold text-text-secondary">
+              Head of design &nbsp;@Total Digital Factory
+            </span>
+          </div>
+
+          <blockquote className="max-w-[745px]">
+            <p className="font-body text-body italic text-text-primary">
+              &ldquo;Strongly autonomous during the discovery phase on highly
+              complex technical and strategic topics. During the build phase,
+              seamlessly integrated into squads and adapted to diverse
+              operational environments. A dedicated team player, highly
+              receptive to feedback, and a positive driving force within a
+              20-person Design Studio. Also acted as a committed mentor to
+              junior consultants, possessing all the core qualities for a highly
+              successful career.&rdquo;
+            </p>
+          </blockquote>
+        </div>
+      </div>
+    </section>
   );
 }

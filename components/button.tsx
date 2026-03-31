@@ -22,7 +22,7 @@ export function Button({
   const base = cn(
     "inline-flex items-center justify-center",
     "font-body font-semibold",
-    size === "xl" ? "text-body-lg px-lg py-sm" : "text-body-sm px-md py-[12px]",
+    size === "xl" ? "text-body-lg px-lg py-sm" : "text-body px-md py-[12px]",
     "rounded-sm",
     "transition-all duration-[var(--dur-fast)] ease-out",
     "focus-visible:outline-2 focus-visible:outline-fg focus-visible:outline-offset-2",

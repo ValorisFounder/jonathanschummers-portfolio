@@ -12,9 +12,9 @@ export function Tag({
       className={cn(
         "inline-block",
         "border border-border-strong",
-        "rounded-[4px]",
-        "px-[12px] py-[6px]",
-        "font-body font-normal text-tag leading-tag",
+        "rounded-md",
+        "px-[10px] py-[6px]", /* px: Figma exact (10px), intentional exception off 8px grid */
+        "font-body font-medium text-tag",
         "text-text-secondary",
         className
       )}

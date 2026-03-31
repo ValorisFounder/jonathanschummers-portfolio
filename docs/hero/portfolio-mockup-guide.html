@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Mockup Guide — Devices & Layouts</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #1a1a1a; }
+
+  .header { background: #fff; border-bottom: 1px solid #e0e0e0; padding: 32px 48px; position: sticky; top: 0; z-index: 100; }
+  .header h1 { font-size: 24px; font-weight: 700; }
+  .header p { font-size: 14px; color: #666; margin-top: 4px; }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  .section { margin-bottom: 64px; }
+  .section-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+  .section-subtitle { font-size: 14px; color: #666; margin-bottom: 32px; line-height: 1.5; }
+
+  .card { background: #fff; border-radius: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); overflow: hidden; margin-bottom: 24px; }
+  .card-header { padding: 20px 28px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+  .card-header h3 { font-size: 16px; font-weight: 600; }
+  .badge { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 10px; border-radius: 100px; }
+  .badge-css { background: #e0e7ff; color: #3730a3; }
+  .badge-trend { background: #dcfce7; color: #166534; }
+  .badge-code { background: #fef3c7; color: #92400e; }
+  .card-body { padding: 28px; }
+  .card-desc { font-size: 13px; color: #666; margin-bottom: 20px; line-height: 1.5; }
+
+  .demo-area { background: #fafafa; border: 2px dashed #e0e0e0; border-radius: 12px; padding: 40px; display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; min-height: 300px; }
+
+  /* ==========================================
+     PART 1: DEVICE MOCKUPS (pure CSS)
+     ========================================== */
+
+  /* --- Browser Desktop Mockup --- */
+  .browser-mockup {
+    width: 560px; background: #fff;
+    border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+  .browser-bar {
+    background: #f0f0f0; padding: 12px 16px;
+    display: flex; align-items: center; gap: 8px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .browser-dots { display: flex; gap: 6px; }
+  .browser-dots span { width: 12px; height: 12px; border-radius: 50%; }
+  .browser-dots span:nth-child(1) { background: #ff5f57; }
+  .browser-dots span:nth-child(2) { background: #ffbd2e; }
+  .browser-dots span:nth-child(3) { background: #28c840; }
+  .browser-url {
+    flex: 1; background: #fff; border-radius: 6px; padding: 6px 12px;
+    font-size: 12px; color: #999; margin-left: 8px;
+  }
+  .browser-content {
+    width: 100%; aspect-ratio: 16/10;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.4); font-size: 14px; font-weight: 500;
+  }
+
+  /* --- MacBook Mockup --- */
+  .macbook-mockup { width: 560px; }
+  .macbook-screen {
+    background: #222; border-radius: 12px 12px 0 0; padding: 16px 16px 0;
+    border: 2px solid #333;
+  }
+  .macbook-screen-inner {
+    width: 100%; aspect-ratio: 16/10;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    border-radius: 4px 4px 0 0;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.3); font-size: 13px;
+  }
+  .macbook-notch {
+    width: 100px; height: 16px; background: #222; margin: 0 auto;
+    border-radius: 0 0 8px 8px; border: 2px solid #333; border-top: 0;
+  }
+  .macbook-base {
+    width: 110%; margin-left: -5%; height: 14px;
+    background: linear-gradient(180deg, #d1d5db, #e5e7eb);
+    border-radius: 0 0 8px 8px;
+    border: 1px solid #ccc;
+  }
+
+  /* --- iPhone Mockup --- */
+  .iphone-mockup {
+    width: 180px; background: #1a1a1a;
+    border-radius: 28px; padding: 10px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15), inset 0 0 0 2px #333;
+  }
+  .iphone-notch {
+    width: 80px; height: 22px; background: #1a1a1a;
+    margin: 0 auto -11px; border-radius: 0 0 14px 14px;
+    position: relative; z-index: 2;
+  }
+  .iphone-screen {
+    width: 100%; aspect-ratio: 9/19.5;
+    background: linear-gradient(180deg, #1e293b, #0f172a);
+    border-radius: 18px; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.3); font-size: 11px;
+  }
+  .iphone-bar {
+    width: 80px; height: 4px; background: #fff;
+    border-radius: 2px; margin: 6px auto 2px;
+  }
+
+  /* --- iPad Mockup --- */
+  .ipad-mockup {
+    width: 260px; background: #222;
+    border-radius: 16px; padding: 14px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    border: 2px solid #333;
+  }
+  .ipad-screen {
+    width: 100%; aspect-ratio: 3/4;
+    background: linear-gradient(180deg, #1e293b, #0f172a);
+    border-radius: 6px; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.3); font-size: 12px;
+  }
+
+  /* --- Perspective / Angled Mockup --- */
+  .perspective-wrap {
+    perspective: 1200px; display: inline-block;
+  }
+  .perspective-mockup {
+    transform: rotateY(-12deg) rotateX(4deg);
+    transition: transform 0.4s ease;
+  }
+  .perspective-mockup:hover {
+    transform: rotateY(-2deg) rotateX(1deg);
+  }
+
+  /* --- Floating / Shadow Mockup --- */
+  .floating-mockup {
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* ==========================================
+     PART 2: PORTFOLIO LAYOUT PATTERNS
+     ========================================== */
+
+  .layout-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .layout-preview {
+    background: #fff; border: 2px dashed #ddd; border-radius: 12px;
+    padding: 20px; min-height: 280px; position: relative;
+  }
+  .layout-label {
+    position: absolute; top: 12px; left: 12px;
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.5px; color: #999; background: #f5f5f5;
+    padding: 3px 8px; border-radius: 4px;
+  }
+  .mini-placeholder {
+    background: #e8e8e8; border-radius: 6px; display: flex;
+    align-items: center; justify-content: center;
+    color: #bbb; font-size: 10px; font-weight: 500;
+  }
+
+  /* Layout A: Alternating */
+  .layout-alt { display: flex; flex-direction: column; gap: 16px; padding-top: 36px; }
+  .layout-alt-row { display: grid; gap: 12px; align-items: center; }
+  .layout-alt-row:nth-child(odd) { grid-template-columns: 55% 45%; }
+  .layout-alt-row:nth-child(even) { grid-template-columns: 45% 55%; }
+  .layout-alt-row .mini-placeholder:first-child { height: 60px; }
+  .layout-alt-row .mini-placeholder:last-child { height: 60px; }
+
+  /* Layout B: Masonry */
+  .layout-masonry { columns: 2; column-gap: 12px; padding-top: 36px; }
+  .layout-masonry .mini-placeholder { margin-bottom: 12px; break-inside: avoid; }
+
+  /* Layout C: Full-width stacked */
+  .layout-stacked { display: flex; flex-direction: column; gap: 12px; padding-top: 36px; }
+
+  /* Layout D: Grid uniform */
+  .layout-uniform { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding-top: 36px; }
+
+  /* Layout E: Featured + Grid */
+  .layout-featured { display: flex; flex-direction: column; gap: 12px; padding-top: 36px; }
+  .layout-featured-sub { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* Layout F: Horizontal Scroll */
+  .layout-hscroll { display: flex; gap: 12px; overflow-x: auto; padding: 36px 0 12px; }
+  .layout-hscroll .mini-placeholder { min-width: 140px; flex-shrink: 0; }
+
+  .code-block {
+    background: #1a1a2e; color: #a5b4fc; border-radius: 8px;
+    padding: 16px 20px; font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 12px; line-height: 1.7; overflow-x: auto;
+    margin-top: 16px;
+  }
+  .code-comment { color: #6b7280; }
+  .code-tag { color: #f472b6; }
+  .code-attr { color: #fbbf24; }
+  .code-value { color: #34d399; }
+
+  .tip { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 12px 16px; border-radius: 0 8px 8px 0; font-size: 13px; color: #1e40af; margin-top: 16px; line-height: 1.5; }
+  .tip strong { font-weight: 700; }
+
+  .comparison-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 16px; }
+  .comparison-table th { text-align: left; padding: 10px 12px; background: #f8f8f8; font-weight: 600; border-bottom: 2px solid #e0e0e0; }
+  .comparison-table td { padding: 10px 12px; border-bottom: 1px solid #eee; }
+  .comparison-table tr:hover td { background: #fafafa; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Guide Mockups & Layouts Portfolio</h1>
+  <p>Techniques CSS pour les device frames + 6 layouts les plus fréquents dans les portfolios design</p>
+</div>
+
+<div class="container">
+
+  <!-- ============================================ -->
+  <!-- PART 1: DEVICE MOCKUPS                       -->
+  <!-- ============================================ -->
+
+  <div class="section">
+    <h2 class="section-title">Partie 1 — Device Mockups en CSS pur</h2>
+    <p class="section-subtitle">5 techniques pour afficher tes screenshots dans des frames de devices. Tout est fait en CSS, aucune image externe requise. Remplace les fonds colorés par tes vrais screenshots.</p>
+
+    <!-- 1. Browser Window -->
+    <div class="card">
+      <div class="card-header">
+        <h3>1. Browser Window (macOS style)</h3>
+        <span class="badge badge-css">CSS pur</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Le classique. Parfait pour les apps web et dashboards. Les 3 dots macOS + barre d'URL donnent immédiatement le contexte "web app".</p>
+        <div class="demo-area">
+          <div class="browser-mockup">
+            <div class="browser-bar">
+              <div class="browser-dots"><span></span><span></span><span></span></div>
+              <div class="browser-url">app.nod-factory.com/dashboard</div>
+            </div>
+            <div class="browser-content">Ton screenshot ici (16:10)</div>
+          </div>
+        </div>
+        <div class="tip"><strong>Quand l'utiliser :</strong> Apps web, dashboards, SaaS, landing pages. C'est le frame le plus commun dans les portfolios product design.</div>
+      </div>
+    </div>
+
+    <!-- 2. MacBook -->
+    <div class="card">
+      <div class="card-header">
+        <h3>2. MacBook / Laptop</h3>
+        <span class="badge badge-trend">Premium</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Plus immersif que le browser seul. Le device physique ajoute du réalisme et permet de montrer le produit "en situation".</p>
+        <div class="demo-area">
+          <div class="macbook-mockup">
+            <div class="macbook-screen">
+              <div class="macbook-screen-inner">Ton screenshot ici</div>
+            </div>
+            <div class="macbook-notch"></div>
+            <div class="macbook-base"></div>
+          </div>
+        </div>
+        <div class="tip"><strong>Quand l'utiliser :</strong> Hero sections, projets premium, quand tu veux donner un côté "lifestyle" au produit.</div>
+      </div>
+    </div>
+
+    <!-- 3. iPhone -->
+    <div class="card">
+      <div class="card-header">
+        <h3>3. iPhone / Mobile</h3>
+        <span class="badge badge-css">CSS pur</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Indispensable pour les projets mobile. Le dynamic island (notch) et le home indicator donnent le contexte iOS.</p>
+        <div class="demo-area">
+          <div class="iphone-mockup">
+            <div class="iphone-notch"></div>
+            <div class="iphone-screen">Ton screenshot mobile ici</div>
+            <div class="iphone-bar"></div>
+          </div>
+          <div class="iphone-mockup" style="transform: scale(0.85); opacity:0.7;">
+            <div class="iphone-notch"></div>
+            <div class="iphone-screen" style="background: linear-gradient(180deg, #064e3b, #0f172a);">Écran secondaire</div>
+            <div class="iphone-bar"></div>
+          </div>
+        </div>
+        <div class="tip"><strong>Pro tip :</strong> Affiche 2-3 écrans côte à côte avec un léger scale/offset pour montrer un flow utilisateur complet.</div>
+      </div>
+    </div>
+
+    <!-- 4. Desktop + Mobile Combo -->
+    <div class="card">
+      <div class="card-header">
+        <h3>4. Combo Desktop + Mobile (le plus impactant)</h3>
+        <span class="badge badge-trend">Recommandé</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Le pattern le plus utilisé dans les portfolios top-tier : un browser desktop en arrière-plan avec un mobile qui overlap en bas à droite. Montre le responsive en un coup d'œil.</p>
+        <div class="demo-area" style="position:relative; min-height: 360px; align-items: flex-start; justify-content: center;">
+          <div class="browser-mockup" style="width:500px;">
+            <div class="browser-bar">
+              <div class="browser-dots"><span></span><span></span><span></span></div>
+              <div class="browser-url">app.nod-factory.com</div>
+            </div>
+            <div class="browser-content" style="aspect-ratio:16/9;">Desktop view</div>
+          </div>
+          <div class="iphone-mockup" style="position:absolute; bottom: 20px; right: 60px; width:120px; box-shadow: 0 12px 40px rgba(0,0,0,0.2);">
+            <div class="iphone-notch" style="width:52px;height:14px;"></div>
+            <div class="iphone-screen" style="font-size:9px;">Mobile view</div>
+            <div class="iphone-bar" style="width:50px;height:3px;"></div>
+          </div>
+        </div>
+        <div class="tip"><strong>C'est LE layout à utiliser pour ton portfolio.</strong> Il montre que tu penses responsive, et le overlap crée de la profondeur visuelle. Ajoute un léger box-shadow sur le mobile pour le décoller du desktop.</div>
+      </div>
+    </div>
+
+    <!-- 5. Perspective / 3D Angle -->
+    <div class="card">
+      <div class="card-header">
+        <h3>5. Perspective / Vue 3D (hover pour animer)</h3>
+        <span class="badge badge-code">CSS Transform</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Un transform CSS en perspective donne un angle 3D isométrique. L'animation au hover "redresse" le mockup. Effet très premium, utilisé par Linear, Raycast, Vercel.</p>
+        <div class="demo-area">
+          <div class="perspective-wrap">
+            <div class="browser-mockup perspective-mockup" style="width:480px;">
+              <div class="browser-bar">
+                <div class="browser-dots"><span></span><span></span><span></span></div>
+                <div class="browser-url">dashboard.example.com</div>
+              </div>
+              <div class="browser-content">Survole-moi pour voir l'animation</div>
+            </div>
+          </div>
+        </div>
+        <div class="code-block">
+<span class="code-comment">/* Perspective container */</span>
+<span class="code-tag">.perspective-wrap</span> {
+  <span class="code-attr">perspective</span>: <span class="code-value">1200px</span>;
+}
+<span class="code-tag">.mockup</span> {
+  <span class="code-attr">transform</span>: <span class="code-value">rotateY(-12deg) rotateX(4deg)</span>;
+  <span class="code-attr">transition</span>: <span class="code-value">transform 0.4s ease</span>;
+}
+<span class="code-tag">.mockup:hover</span> {
+  <span class="code-attr">transform</span>: <span class="code-value">rotateY(-2deg) rotateX(1deg)</span>;
+}
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Floating -->
+    <div class="card">
+      <div class="card-header">
+        <h3>6. Floating Animation</h3>
+        <span class="badge badge-code">CSS Animation</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Un léger mouvement de flottement donne vie au mockup sans être distrayant. Subtil mais efficace pour les hero sections.</p>
+        <div class="demo-area">
+          <div class="browser-mockup floating-mockup" style="width: 420px;">
+            <div class="browser-bar">
+              <div class="browser-dots"><span></span><span></span><span></span></div>
+              <div class="browser-url">nod-dashboard.app</div>
+            </div>
+            <div class="browser-content" style="aspect-ratio:16/9; font-size:12px;">Je flotte doucement</div>
+          </div>
+        </div>
+        <div class="code-block">
+<span class="code-tag">@keyframes float</span> {
+  <span class="code-value">0%, 100%</span> { <span class="code-attr">transform</span>: <span class="code-value">translateY(0)</span>; }
+  <span class="code-value">50%</span>    { <span class="code-attr">transform</span>: <span class="code-value">translateY(-8px)</span>; }
+}
+<span class="code-tag">.floating</span> {
+  <span class="code-attr">animation</span>: <span class="code-value">float 3s ease-in-out infinite</span>;
+}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- PART 2: PORTFOLIO LAYOUTS                    -->
+  <!-- ============================================ -->
+
+  <div class="section">
+    <h2 class="section-title">Partie 2 — Les 6 layouts portfolio les plus fréquents</h2>
+    <p class="section-subtitle">Chaque layout a des forces différentes selon le nombre de projets et le type d'impact que tu veux créer.</p>
+
+    <div class="layout-grid">
+
+      <!-- Layout A: Alternating -->
+      <div class="layout-preview">
+        <span class="layout-label">A — Alternating Rows</span>
+        <div class="layout-alt">
+          <div class="layout-alt-row">
+            <div class="mini-placeholder" style="height:70px;">Texte</div>
+            <div class="mini-placeholder" style="height:70px;">Image →</div>
+          </div>
+          <div class="layout-alt-row">
+            <div class="mini-placeholder" style="height:70px;">← Image</div>
+            <div class="mini-placeholder" style="height:70px;">Texte</div>
+          </div>
+          <div class="layout-alt-row">
+            <div class="mini-placeholder" style="height:70px;">Texte</div>
+            <div class="mini-placeholder" style="height:70px;">Image →</div>
+          </div>
+        </div>
+        <div style="margin-top:12px;font-size:11px;color:#888;line-height:1.4;">
+          <strong>Utilisé par :</strong> Ton design actuel, Dribbble portfolios<br>
+          <strong>Best for :</strong> 4-8 projets, scan vertical<br>
+          <strong>Risque :</strong> Monotone si pas de variation
+        </div>
+      </div>
+
+      <!-- Layout B: Masonry -->
+      <div class="layout-preview">
+        <span class="layout-label">B — Masonry Grid</span>
+        <div class="layout-masonry">
+          <div class="mini-placeholder" style="height:100px;">Projet 1</div>
+          <div class="mini-placeholder" style="height:140px;">Projet 2</div>
+          <div class="mini-placeholder" style="height:80px;">Projet 3</div>
+          <div class="mini-placeholder" style="height:120px;">Projet 4</div>
+          <div class="mini-placeholder" style="height:90px;">Projet 5</div>
+        </div>
+        <div style="margin-top:12px;font-size:11px;color:#888;line-height:1.4;">
+          <strong>Utilisé par :</strong> Pinterest, Behance, agences<br>
+          <strong>Best for :</strong> 8+ projets, contenu visuel fort<br>
+          <strong>Risque :</strong> Pas de hiérarchie claire entre projets
+        </div>
+      </div>
+
+      <!-- Layout C: Full-width Stacked -->
+      <div class="layout-preview">
+        <span class="layout-label">C — Full-Width Stacked</span>
+        <div class="layout-stacked">
+          <div class="mini-placeholder" style="height:80px;">Projet 1 (pleine largeur)</div>
+          <div class="mini-placeholder" style="height:80px;">Projet 2 (pleine largeur)</div>
+          <div class="mini-placeholder" style="height:80px;">Projet 3 (pleine largeur)</div>
+        </div>
+        <div style="margin-top:12px;font-size:11px;color:#888;line-height:1.4;">
+          <strong>Utilisé par :</strong> Apple, Linear, portfolios premium<br>
+          <strong>Best for :</strong> 3-5 projets hero, impact maximum<br>
+          <strong>Risque :</strong> Beaucoup de scroll si trop de projets
+        </div>
+      </div>
+
+      <!-- Layout D: Uniform Grid -->
+      <div class="layout-preview">
+        <span class="layout-label">D — Uniform Grid</span>
+        <div class="layout-uniform">
+          <div class="mini-placeholder" style="height:70px;">Projet 1</div>
+          <div class="mini-placeholder" style="height:70px;">Projet 2</div>
+          <div class="mini-placeholder" style="height:70px;">Projet 3</div>
+          <div class="mini-placeholder" style="height:70px;">Projet 4</div>
+        </div>
+        <div style="margin-top:12px;font-size:11px;color:#888;line-height:1.4;">
+          <strong>Utilisé par :</strong> Stripe, Notion portfolios<br>
+          <strong>Best for :</strong> 4-6 projets, vue d'ensemble propre<br>
+          <strong>Risque :</strong> Tout se vaut — pas de "star project"
+        </div>
+      </div>
+
+      <!-- Layout E: Featured + Grid -->
+      <div class="layout-preview">
+        <span class="layout-label">E — Featured + Grid</span>
+        <div class="layout-featured">
+          <div class="mini-placeholder" style="height:100px;">★ Projet Hero (pleine largeur)</div>
+          <div class="layout-featured-sub">
+            <div class="mini-placeholder" style="height:60px;">Projet 2</div>
+            <div class="mini-placeholder" style="height:60px;">Projet 3</div>
+          </div>
+        </div>
+        <div style="margin-top:12px;font-size:11px;color:#888;line-height:1.4;">
+          <strong>Utilisé par :</strong> Les meilleurs portfolios product design<br>
+          <strong>Best for :</strong> 1 projet star + 4-6 secondaires<br>
+          <strong>Risque :</strong> Le projet featured doit être vraiment fort
+        </div>
+      </div>
+
+      <!-- Layout F: Horizontal Scroll -->
+      <div class="layout-preview">
+        <span class="layout-label">F — Horizontal Scroll</span>
+        <div class="layout-hscroll">
+          <div class="mini-placeholder" style="height:120px;">P1</div>
+          <div class="mini-placeholder" style="height:120px;">P2</div>
+          <div class="mini-placeholder" style="height:120px;">P3</div>
+          <div class="mini-placeholder" style="height:120px;">P4</div>
+          <div class="mini-placeholder" style="height:120px;">P5</div>
+        </div>
+        <div style="margin-top:12px;font-size:11px;color:#888;line-height:1.4;">
+          <strong>Utilisé par :</strong> Portfolios créatifs, motion designers<br>
+          <strong>Best for :</strong> Beaucoup de projets visuels similaires<br>
+          <strong>Risque :</strong> Discoverability faible, UX mobile discutable
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- PART 3: COMPARISON TABLE                     -->
+  <!-- ============================================ -->
+
+  <div class="section">
+    <h2 class="section-title">Partie 3 — Comparatif rapide</h2>
+
+    <div class="card">
+      <div class="card-body" style="padding:0; overflow-x:auto;">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Layout</th>
+              <th>Nb projets idéal</th>
+              <th>Impact visuel</th>
+              <th>Scannabilité</th>
+              <th>Effort dev</th>
+              <th>Tendance 2026</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>A. Alternating</strong></td><td>4-8</td><td>★★★☆</td><td>★★★★</td><td>Faible</td><td>Classique</td></tr>
+            <tr><td><strong>B. Masonry</strong></td><td>8+</td><td>★★★☆</td><td>★★☆☆</td><td>Moyen</td><td>En déclin</td></tr>
+            <tr style="background:#f0fdf4"><td><strong>C. Full-Width</strong></td><td>3-5</td><td>★★★★★</td><td>★★★☆</td><td>Faible</td><td>🔥 Très tendance</td></tr>
+            <tr><td><strong>D. Uniform Grid</strong></td><td>4-6</td><td>★★★☆</td><td>★★★★★</td><td>Faible</td><td>Stable</td></tr>
+            <tr style="background:#f0fdf4"><td><strong>E. Featured + Grid</strong></td><td>5-8</td><td>★★★★☆</td><td>★★★★</td><td>Moyen</td><td>🔥 Très tendance</td></tr>
+            <tr><td><strong>F. Horizontal</strong></td><td>6+</td><td>★★★★</td><td>★★☆☆</td><td>Moyen</td><td>Niche</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:24px;">
+      <strong>Ma recommandation pour toi :</strong> Tu es sur un layout <strong>A (Alternating)</strong> actuellement. Passe au <strong>E (Featured + Grid)</strong> avec ton projet NOD en hero pleine largeur + les autres en grid 2 colonnes. Utilise le <strong>combo Desktop + Mobile (technique #4)</strong> pour tes mockups au lieu de screenshots à plat. Ajoute une <strong>perspective 3D (#5)</strong> sur le projet hero pour le différencier.
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

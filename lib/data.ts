@@ -51,6 +51,7 @@ export const projects: Project[] = [
     title:
       "Cut manual data entry on construction sites by redesigning the activity report with 16 field workshops",
     metric: "16 workshops · 12 user tests",
+    company: "Spies Batignolles",
     tags: ["UX Research", "Design Thinking", "ERP Construction"],
     type: "compact",
   },
@@ -59,6 +60,7 @@ export const projects: Project[] = [
     title:
       "Reduced refinery pipe leaks by 6% with a corrosion risk tool deployed to 500 inspectors across 4 sites",
     metric: "-6% leaks · 500 users · 4 sites",
+    company: "Total Digital Factory — SMINT",
     tags: ["Product Design", "Data", "TotalEnergies Digital Factory"],
     type: "compact",
   },
@@ -67,6 +69,7 @@ export const projects: Project[] = [
     title:
       "Designing and building the website for an NGO empowering girls' education in Mauritania",
     metric: "Just released · April 2026",
+    company: "Malaama",
     tags: ["Product Builder", "Web Design", "Social Impact"],
     type: "compact",
   },

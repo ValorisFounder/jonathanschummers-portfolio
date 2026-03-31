@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guide Technique — Mockups, Frames & Interactions</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #1a1a1a; }
+
+  .header { background: #fff; border-bottom: 1px solid #e0e0e0; padding: 28px 48px; position: sticky; top: 0; z-index: 100; }
+  .header h1 { font-size: 22px; font-weight: 700; }
+  .header p { font-size: 13px; color: #666; margin-top: 4px; }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  .section { margin-bottom: 64px; }
+  .section-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+  .section-sub { font-size: 14px; color: #666; margin-bottom: 28px; line-height: 1.5; }
+
+  .card { background: #fff; border-radius: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); overflow: hidden; margin-bottom: 28px; }
+  .card-head { padding: 18px 24px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+  .card-head h3 { font-size: 16px; font-weight: 600; }
+  .badge { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 10px; border-radius: 100px; }
+  .badge-code { background: #e0e7ff; color: #3730a3; }
+  .badge-figma { background: #fce7f3; color: #9d174d; }
+  .badge-best { background: #16a34a; color: #fff; }
+  .badge-video { background: #fef3c7; color: #92400e; }
+  .card-body { padding: 24px; }
+  .card-desc { font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 20px; }
+
+  .demo { background: #f8f8f8; border: 2px dashed #e0e0e0; border-radius: 12px; padding: 40px; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 32px; }
+  .demo-dark { background: #111827; border-color: #1f2937; }
+
+  .tip { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 12px 16px; border-radius: 0 8px 8px 0; font-size: 13px; color: #1e40af; margin-top: 16px; line-height: 1.5; }
+  .tip strong { font-weight: 700; }
+  .warn { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 12px 16px; border-radius: 0 8px 8px 0; font-size: 13px; color: #92400e; margin-top: 16px; line-height: 1.5; }
+
+  .approach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+  .approach { padding: 16px; border-radius: 10px; border: 1px solid #eee; background: #fafafa; }
+  .approach h4 { font-size: 13px; font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+  .approach p { font-size: 12px; color: #666; line-height: 1.5; }
+  .approach-best { border-color: #16a34a; background: #f0fdf4; }
+
+  .code-block {
+    background: #0f172a; color: #e2e8f0; border-radius: 10px;
+    padding: 20px; font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 12px; line-height: 1.8; overflow-x: auto; margin-top: 16px;
+    position: relative;
+  }
+  .code-block::before {
+    content: attr(data-lang);
+    position: absolute; top: 8px; right: 12px;
+    font-size: 10px; color: #475569; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .c-comment { color: #64748b; }
+  .c-tag { color: #f472b6; }
+  .c-attr { color: #fbbf24; }
+  .c-val { color: #34d399; }
+  .c-prop { color: #60a5fa; }
+  .c-str { color: #a78bfa; }
+
+  /* ==========================================
+     BROWSER MOCKUP - Code approach
+     ========================================== */
+  .browser-frame {
+    width: 520px; border-radius: 12px; overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+    background: #fff;
+  }
+  .browser-chrome {
+    background: #f3f4f6; padding: 12px 16px;
+    display: flex; align-items: center; gap: 10px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .browser-dots { display: flex; gap: 6px; }
+  .browser-dots span { width: 12px; height: 12px; border-radius: 50%; }
+  .browser-dots span:nth-child(1) { background: #ef4444; }
+  .browser-dots span:nth-child(2) { background: #f59e0b; }
+  .browser-dots span:nth-child(3) { background: #22c55e; }
+  .browser-url {
+    flex: 1; background: #fff; border-radius: 6px; padding: 6px 12px;
+    font-size: 12px; color: #9ca3af; border: 1px solid #e5e7eb;
+  }
+  .browser-viewport {
+    width: 100%; overflow: hidden; position: relative;
+    background: #1a1a2e;
+  }
+
+  /* ==========================================
+     iPHONE MOCKUP
+     ========================================== */
+  .iphone-frame {
+    width: 200px; background: #1c1c1e;
+    border-radius: 32px; padding: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 0 0 2px #3a3a3c;
+  }
+  .iphone-dynamic-island {
+    width: 72px; height: 20px; background: #000;
+    margin: 0 auto 0; border-radius: 20px;
+    position: relative; z-index: 2;
+  }
+  .iphone-viewport {
+    width: 100%; border-radius: 22px; overflow: hidden;
+    margin-top: -10px; position: relative;
+  }
+  .iphone-home {
+    width: 80px; height: 4px; background: #fff;
+    border-radius: 2px; margin: 8px auto 4px;
+  }
+
+  /* ==========================================
+     SCROLL ON HOVER EFFECT
+     ========================================== */
+  .scroll-demo .browser-viewport {
+    height: 280px; overflow: hidden;
+  }
+  .scroll-demo .scroll-content {
+    transition: transform 4s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  .scroll-demo:hover .scroll-content {
+    transform: translateY(calc(-100% + 280px));
+  }
+
+  .scroll-demo-mobile .iphone-viewport {
+    height: 340px; overflow: hidden;
+  }
+  .scroll-demo-mobile .scroll-content-m {
+    transition: transform 3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  .scroll-demo-mobile:hover .scroll-content-m {
+    transform: translateY(calc(-100% + 340px));
+  }
+
+  /* ==========================================
+     FAKE LONG PAGE FOR SCROLL DEMO
+     ========================================== */
+  .fake-page {
+    width: 100%; background: #0f172a; color: #e2e8f0; font-size: 11px;
+  }
+  .fake-nav { background: #1e293b; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; }
+  .fake-nav-logo { font-weight: 700; font-size: 12px; }
+  .fake-nav-links { display: flex; gap: 12px; font-size: 10px; color: #94a3b8; }
+  .fake-hero { padding: 40px 20px; text-align: center; }
+  .fake-hero h2 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .fake-hero p { color: #94a3b8; font-size: 11px; }
+  .fake-section { padding: 20px; }
+  .fake-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .fake-card { background: #1e293b; border-radius: 8px; padding: 16px; }
+  .fake-card-title { font-weight: 600; font-size: 11px; margin-bottom: 4px; }
+  .fake-card-text { color: #64748b; font-size: 9px; line-height: 1.4; }
+  .fake-metric { font-size: 22px; font-weight: 800; color: #3b82f6; }
+  .fake-chart { height: 60px; background: linear-gradient(180deg, rgba(59,130,246,0.2), transparent); border-radius: 6px; margin-top: 8px; position: relative; overflow: hidden; }
+  .fake-chart::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: #3b82f6; }
+  .fake-table { width: 100%; margin-top: 12px; }
+  .fake-table-row { display: flex; padding: 6px 0; border-bottom: 1px solid #1e293b; font-size: 9px; }
+  .fake-table-row span { flex: 1; }
+  .fake-table-row .status { color: #22c55e; }
+  .fake-footer { padding: 20px; text-align: center; color: #475569; font-size: 9px; border-top: 1px solid #1e293b; margin-top: 20px; }
+
+  /* Fake mobile page */
+  .fake-mobile { width: 100%; background: #0f172a; color: #e2e8f0; }
+  .fake-m-header { padding: 16px; text-align: center; }
+  .fake-m-header h3 { font-size: 14px; font-weight: 700; }
+  .fake-m-header p { font-size: 9px; color: #64748b; margin-top: 4px; }
+  .fake-m-card { margin: 8px 12px; background: #1e293b; border-radius: 10px; padding: 14px; }
+  .fake-m-card h4 { font-size: 11px; font-weight: 600; margin-bottom: 4px; }
+  .fake-m-card p { font-size: 9px; color: #64748b; }
+  .fake-m-card .metric { font-size: 20px; font-weight: 800; color: #3b82f6; margin: 6px 0; }
+  .fake-m-list { margin: 8px 12px; }
+  .fake-m-list-item { display: flex; align-items: center; gap: 8px; padding: 10px; background: #1e293b; border-radius: 8px; margin-bottom: 6px; }
+  .fake-m-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .fake-m-dot.green { background: #22c55e; }
+  .fake-m-dot.yellow { background: #f59e0b; }
+  .fake-m-dot.red { background: #ef4444; }
+  .fake-m-list-text { font-size: 10px; flex: 1; }
+  .fake-m-list-val { font-size: 10px; color: #64748b; }
+
+  /* ==========================================
+     VIDEO MOCKUP
+     ========================================== */
+  .video-placeholder {
+    width: 100%; aspect-ratio: 16/10;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: #475569; font-size: 13px; gap: 8px; position: relative;
+  }
+  .play-btn {
+    width: 48px; height: 48px; background: rgba(255,255,255,0.1);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    border: 2px solid rgba(255,255,255,0.2); backdrop-filter: blur(4px);
+  }
+  .play-triangle { width: 0; height: 0; border-left: 14px solid rgba(255,255,255,0.6); border-top: 8px solid transparent; border-bottom: 8px solid transparent; margin-left: 3px; }
+
+  /* Comparison table */
+  .comp-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 16px; }
+  .comp-table th { text-align: left; padding: 10px 12px; background: #f8f8f8; font-weight: 600; border-bottom: 2px solid #e0e0e0; font-size: 11px; }
+  .comp-table td { padding: 10px 12px; border-bottom: 1px solid #eee; vertical-align: top; }
+  .comp-table tr:hover td { background: #fafafa; }
+  .star { color: #f59e0b; }
+
+  /* Decision tree */
+  .decision { background: linear-gradient(135deg, #0f172a, #1e293b); border-radius: 16px; padding: 28px; color: #e2e8f0; margin-top: 32px; }
+  .decision h3 { font-size: 16px; font-weight: 700; margin-bottom: 16px; color: #fff; }
+  .decision-flow { display: flex; flex-direction: column; gap: 12px; }
+  .decision-item { display: grid; grid-template-columns: 200px 24px 1fr; align-items: center; gap: 8px; }
+  .decision-q { font-size: 12px; color: #94a3b8; text-align: right; }
+  .decision-arrow { color: #3b82f6; text-align: center; font-weight: 700; }
+  .decision-a { font-size: 13px; font-weight: 600; background: #1e293b; padding: 8px 14px; border-radius: 8px; border: 1px solid #334155; }
+  .decision-a code { background: #0f172a; padding: 2px 6px; border-radius: 4px; font-size: 11px; color: #60a5fa; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Guide Technique — Implémentation Mockups & Interactions</h1>
+  <p>Code vs Figma, comment ça marche, et quoi choisir pour ton portfolio</p>
+</div>
+
+<div class="container">
+
+  <!-- ============================================ -->
+  <!-- SECTION 1: BROWSER FRAME                     -->
+  <!-- ============================================ -->
+  <div class="section">
+    <h2 class="section-title">1. Browser Window Frame — Comment faire ?</h2>
+    <p class="section-sub">3 approches possibles, avec ma recommandation pour ton cas.</p>
+
+    <div class="approach-grid">
+      <div class="approach approach-best">
+        <h4>✓ Approche A — CSS pur dans ton site portfolio</h4>
+        <p>Tu wraps ton screenshot (<code>&lt;img&gt;</code>) dans une <code>&lt;div&gt;</code> qui dessine la barre macOS en CSS. Le screenshot est une simple image. La "chrome" (dots + URL bar) est du HTML/CSS autour.</p>
+        <p style="margin-top:8px; font-weight:600; color:#166534;">→ Recommandé pour toi. Léger, responsive, et tu contrôles tout.</p>
+      </div>
+      <div class="approach">
+        <h4>Approche B — Figma export</h4>
+        <p>Tu crées le frame dans Figma (composant Device Mockup), tu places ton screenshot dedans, tu exportes le tout en PNG/WebP. Le browser frame fait partie de l'image.</p>
+        <p style="margin-top:8px; color:#92400e;">→ Plus lourd (image plus grande), pas animable, mais simple si pas à l'aise en code.</p>
+      </div>
+      <div class="approach">
+        <h4>Approche C — Librairie CSS (Flowbite, Preline)</h4>
+        <p>Tu importes un composant tout fait type Flowbite Device Mockups ou Preline Devices. Copy-paste le HTML, mets ton image dedans.</p>
+        <p style="margin-top:8px; color:#555;">→ Rapide mais ajoute une dépendance. OK pour prototyper.</p>
+      </div>
+      <div class="approach">
+        <h4>Approche D — Outil mockup (DeviceFrames.com)</h4>
+        <p>Tu upload ton screenshot, tu choisis un device, tu télécharges le résultat en PNG. Zéro code.</p>
+        <p style="margin-top:8px; color:#555;">→ Utile pour des posts LinkedIn/Behance, pas pour un site web (image statique).</p>
+      </div>
+    </div>
+
+    <!-- LIVE DEMO: Browser Frame -->
+    <div class="card">
+      <div class="card-head">
+        <h3>Démo live — Browser Frame en CSS (Approche A)</h3>
+        <span class="badge badge-best">Ce que tu dois faire</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Voici le principe : une <code>&lt;div&gt;</code> pour la chrome (barre macOS), et ton screenshot en <code>&lt;img&gt;</code> en dessous. C'est tout.</p>
+        <div class="demo">
+          <div class="browser-frame">
+            <div class="browser-chrome">
+              <div class="browser-dots"><span></span><span></span><span></span></div>
+              <div class="browser-url">app.nod-factory.com/dashboard</div>
+            </div>
+            <div class="browser-viewport">
+              <!-- ICI : remplace par <img src="ton-screenshot.webp"> -->
+              <div class="fake-page">
+                <div class="fake-nav">
+                  <span class="fake-nav-logo">NOD Dashboard</span>
+                  <div class="fake-nav-links"><span>Alert page</span><span>Logbook</span><span>Assets</span></div>
+                </div>
+                <div style="padding:16px;">
+                  <div class="fake-cards">
+                    <div class="fake-card"><div class="fake-metric">74%</div><div class="fake-card-text">Current production</div><div class="fake-chart"></div></div>
+                    <div class="fake-card"><div class="fake-metric">-100kE</div><div class="fake-card-text">Loss of production</div><div class="fake-chart"></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-block" data-lang="HTML">
+<span class="c-comment">&lt;!-- Structure HTML — c'est tout ce qu'il faut --&gt;</span>
+
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-val">"browser-frame"</span><span class="c-tag">&gt;</span>
+
+  <span class="c-comment">&lt;!-- La barre macOS (dots + URL) --&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-val">"browser-chrome"</span><span class="c-tag">&gt;</span>
+    <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-val">"dots"</span><span class="c-tag">&gt;</span>
+      <span class="c-tag">&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;</span>
+    <span class="c-tag">&lt;/div&gt;</span>
+    <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-val">"url-bar"</span><span class="c-tag">&gt;</span>app.nod-factory.com/dashboard<span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-tag">&lt;/div&gt;</span>
+
+  <span class="c-comment">&lt;!-- Ton screenshot = une simple image --&gt;</span>
+  <span class="c-tag">&lt;img</span> <span class="c-attr">src</span>=<span class="c-val">"./nod-dashboard.webp"</span>
+       <span class="c-attr">alt</span>=<span class="c-val">"NOD Dashboard"</span>
+       <span class="c-attr">style</span>=<span class="c-val">"width: 100%; display: block;"</span> <span class="c-tag">/&gt;</span>
+
+<span class="c-tag">&lt;/div&gt;</span>
+        </div>
+
+        <div class="code-block" data-lang="CSS">
+<span class="c-tag">.browser-frame</span> {
+  <span class="c-prop">border-radius</span>: <span class="c-val">12px</span>;
+  <span class="c-prop">overflow</span>: <span class="c-val">hidden</span>;
+  <span class="c-prop">box-shadow</span>: <span class="c-val">0 8px 32px rgba(0,0,0,0.12)</span>;
+}
+
+<span class="c-tag">.browser-chrome</span> {
+  <span class="c-prop">background</span>: <span class="c-val">#f3f4f6</span>;
+  <span class="c-prop">padding</span>: <span class="c-val">12px 16px</span>;
+  <span class="c-prop">display</span>: <span class="c-val">flex</span>;
+  <span class="c-prop">align-items</span>: <span class="c-val">center</span>;
+  <span class="c-prop">gap</span>: <span class="c-val">10px</span>;
+}
+
+<span class="c-tag">.dots span</span> {
+  <span class="c-prop">width</span>: <span class="c-val">12px</span>; <span class="c-prop">height</span>: <span class="c-val">12px</span>;
+  <span class="c-prop">border-radius</span>: <span class="c-val">50%</span>;
+  <span class="c-prop">display</span>: <span class="c-val">inline-block</span>;
+}
+<span class="c-tag">.dots span:nth-child(1)</span> { <span class="c-prop">background</span>: <span class="c-val">#ef4444</span>; }
+<span class="c-tag">.dots span:nth-child(2)</span> { <span class="c-prop">background</span>: <span class="c-val">#f59e0b</span>; }
+<span class="c-tag">.dots span:nth-child(3)</span> { <span class="c-prop">background</span>: <span class="c-val">#22c55e</span>; }
+        </div>
+
+        <div class="tip"><strong>En résumé :</strong> Le browser frame = 10 lignes de HTML + 20 lignes de CSS. Ton screenshot est une simple <code>&lt;img&gt;</code> dedans. Pas besoin de Figma pour ça.</div>
+      </div>
+    </div>
+
+    <!-- iPhone implementation -->
+    <div class="card">
+      <div class="card-head">
+        <h3>Démo live — iPhone Frame en CSS</h3>
+        <span class="badge badge-code">Même principe</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Même logique : une <code>&lt;div&gt;</code> dessine le device (bords arrondis + dynamic island + home indicator), et ton screenshot mobile va dans le viewport en <code>&lt;img&gt;</code>.</p>
+        <div class="demo demo-dark">
+          <div class="iphone-frame">
+            <div class="iphone-dynamic-island"></div>
+            <div class="iphone-viewport">
+              <!-- ICI : remplace par <img src="ton-screenshot-mobile.webp"> -->
+              <div class="fake-mobile">
+                <div class="fake-m-header">
+                  <h3>Plant Selection</h3>
+                  <p>12 plants monitored</p>
+                </div>
+                <div class="fake-m-card">
+                  <h4>Métairie 2</h4>
+                  <div class="metric">74%</div>
+                  <p>Current production · DR_SUD</p>
+                </div>
+                <div class="fake-m-list">
+                  <div class="fake-m-list-item"><div class="fake-m-dot green"></div><span class="fake-m-list-text">Métairie 1</span><span class="fake-m-list-val">00:34</span></div>
+                  <div class="fake-m-list-item"><div class="fake-m-dot green"></div><span class="fake-m-list-text">Métairie 3</span><span class="fake-m-list-val">00:34</span></div>
+                  <div class="fake-m-list-item"><div class="fake-m-dot yellow"></div><span class="fake-m-list-text">Arques 2</span><span class="fake-m-list-val">00:34</span></div>
+                  <div class="fake-m-list-item"><div class="fake-m-dot red"></div><span class="fake-m-list-text">Autre centrale</span><span class="fake-m-list-val">00:34</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="iphone-home"></div>
+          </div>
+        </div>
+
+        <div class="code-block" data-lang="HTML">
+<span class="c-comment">&lt;!-- iPhone = div avec border-radius + img dedans --&gt;</span>
+
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-val">"iphone-frame"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-val">"dynamic-island"</span><span class="c-tag">&gt;&lt;/div&gt;</span>
+
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-val">"viewport"</span><span class="c-tag">&gt;</span>
+    <span class="c-tag">&lt;img</span> <span class="c-attr">src</span>=<span class="c-val">"./nod-mobile.webp"</span>
+         <span class="c-attr">alt</span>=<span class="c-val">"NOD Mobile"</span>
+         <span class="c-attr">style</span>=<span class="c-val">"width: 100%; display: block;"</span> <span class="c-tag">/&gt;</span>
+  <span class="c-tag">&lt;/div&gt;</span>
+
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-val">"home-indicator"</span><span class="c-tag">&gt;&lt;/div&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span>
+        </div>
+        <div class="tip"><strong>Le truc :</strong> le <code>border-radius: 32px</code> sur le frame + <code>border-radius: 22px</code> sur le viewport + <code>overflow: hidden</code> = ton screenshot est automatiquement clippé aux coins arrondis de l'iPhone. Aucun masque Figma nécessaire.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECTION 2: SCROLL ON HOVER                   -->
+  <!-- ============================================ -->
+  <div class="section">
+    <h2 class="section-title">2. Scroll-on-Hover — Montrer une page complète</h2>
+    <p class="section-sub">Au hover, le screenshot défile automatiquement de haut en bas. Montre que ta page est "vivante" sans quitter la card. Survole les démos ci-dessous.</p>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>Démo — Scroll automatique au hover (Desktop)</h3>
+        <span class="badge badge-best">Le plus impactant</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Survole le browser ci-dessous pour voir la page défiler. C'est un simple <code>transform: translateY()</code> en CSS avec un <code>transition</code>. Aucun JavaScript requis.</p>
+        <div class="demo">
+          <div class="browser-frame scroll-demo" style="width: 500px; cursor: pointer;">
+            <div class="browser-chrome">
+              <div class="browser-dots"><span></span><span></span><span></span></div>
+              <div class="browser-url">app.nod-factory.com/dashboard — survole pour scroller ↓</div>
+            </div>
+            <div class="browser-viewport" style="height: 280px; overflow: hidden;">
+              <div class="scroll-content">
+                <div class="fake-page">
+                  <div class="fake-nav">
+                    <span class="fake-nav-logo">NOD Dashboard</span>
+                    <div class="fake-nav-links"><span>Alert page</span><span>Logbook</span><span>Assets</span></div>
+                  </div>
+                  <div class="fake-hero">
+                    <h2>Network Operation Dashboard</h2>
+                    <p>Monitor 12 power plants in real-time</p>
+                  </div>
+                  <div class="fake-section">
+                    <div class="fake-cards">
+                      <div class="fake-card"><div class="fake-metric">74%</div><div class="fake-card-text">Current production</div><div class="fake-chart"></div></div>
+                      <div class="fake-card"><div class="fake-metric">-100kE</div><div class="fake-card-text">Loss of production</div><div class="fake-chart"></div></div>
+                    </div>
+                  </div>
+                  <div class="fake-section">
+                    <div style="font-weight:600;margin-bottom:8px;font-size:12px;">Plant Status</div>
+                    <div class="fake-table-row"><span style="font-weight:600">Plant</span><span>Status</span><span>Time</span></div>
+                    <div class="fake-table-row"><span>Métairie 2</span><span class="status">● Active</span><span>00:34</span></div>
+                    <div class="fake-table-row"><span>Métairie 1</span><span class="status">● Active</span><span>00:34</span></div>
+                    <div class="fake-table-row"><span>Arques 2</span><span style="color:#f59e0b">● Warning</span><span>00:34</span></div>
+                    <div class="fake-table-row"><span>Autre centrale</span><span style="color:#ef4444">● Alert</span><span>00:34</span></div>
+                    <div class="fake-table-row"><span>Autre centrale</span><span class="status">● Active</span><span>00:34</span></div>
+                  </div>
+                  <div class="fake-section">
+                    <div class="fake-cards">
+                      <div class="fake-card"><div class="fake-card-title">Delivery Alarms</div><div class="fake-card-text">3 active alarms</div></div>
+                      <div class="fake-card"><div class="fake-card-title">Instructions</div><div class="fake-card-text">0 active instructions</div></div>
+                    </div>
+                  </div>
+                  <div class="fake-footer">© 2024 TotalEnergies Digital Factory — NOD v3.2</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-block" data-lang="CSS">
+<span class="c-comment">/* Le secret : overflow hidden + translateY au hover */</span>
+
+<span class="c-tag">.browser-viewport</span> {
+  <span class="c-prop">height</span>: <span class="c-val">300px</span>;       <span class="c-comment">/* fenêtre visible fixe */</span>
+  <span class="c-prop">overflow</span>: <span class="c-val">hidden</span>;     <span class="c-comment">/* cache le reste */</span>
+}
+
+<span class="c-tag">.screenshot</span> {
+  <span class="c-comment">/* l'image est plus haute que la fenêtre */</span>
+  <span class="c-prop">transition</span>: <span class="c-val">transform 4s cubic-bezier(0.25, 0.1, 0.25, 1)</span>;
+}
+
+<span class="c-tag">.browser-frame:hover .screenshot</span> {
+  <span class="c-comment">/* scroll vers le bas = on déplace l'image vers le haut */</span>
+  <span class="c-prop">transform</span>: <span class="c-val">translateY(calc(-100% + 300px))</span>;
+}
+        </div>
+
+        <div class="tip"><strong>Comment ça marche :</strong> Ton screenshot est une image longue (la page entière). Le viewport a une hauteur fixe + <code>overflow: hidden</code>. Au hover, tu translateY l'image vers le haut. La <code>transition</code> CSS fait l'animation fluide. 3 lignes de CSS, zéro JS.</div>
+      </div>
+    </div>
+
+    <!-- Mobile scroll -->
+    <div class="card">
+      <div class="card-head">
+        <h3>Démo — Scroll-on-hover sur iPhone</h3>
+        <span class="badge badge-code">Même technique</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Même principe appliqué au mockup mobile. Survole l'iPhone pour voir la page défiler.</p>
+        <div class="demo demo-dark">
+          <div class="iphone-frame scroll-demo-mobile" style="cursor:pointer;">
+            <div class="iphone-dynamic-island"></div>
+            <div class="iphone-viewport" style="height:340px; overflow:hidden;">
+              <div class="scroll-content-m">
+                <div class="fake-mobile">
+                  <div class="fake-m-header">
+                    <h3>Plant Selection</h3>
+                    <p>Survole pour scroller ↓</p>
+                  </div>
+                  <div class="fake-m-card"><h4>Production Overview</h4><div class="metric">74%</div><p>Current · Métairie 2</p></div>
+                  <div class="fake-m-card"><h4>Loss Tracking</h4><div class="metric">-100kE</div><p>This month</p></div>
+                  <div class="fake-m-list">
+                    <div class="fake-m-list-item"><div class="fake-m-dot green"></div><span class="fake-m-list-text">Métairie 2</span><span class="fake-m-list-val">00:34</span></div>
+                    <div class="fake-m-list-item"><div class="fake-m-dot green"></div><span class="fake-m-list-text">Métairie 1</span><span class="fake-m-list-val">00:34</span></div>
+                    <div class="fake-m-list-item"><div class="fake-m-dot yellow"></div><span class="fake-m-list-text">Métairie 3</span><span class="fake-m-list-val">00:34</span></div>
+                    <div class="fake-m-list-item"><div class="fake-m-dot red"></div><span class="fake-m-list-text">Arques 2</span><span class="fake-m-list-val">00:34</span></div>
+                    <div class="fake-m-list-item"><div class="fake-m-dot green"></div><span class="fake-m-list-text">Autre centrale</span><span class="fake-m-list-val">00:34</span></div>
+                    <div class="fake-m-list-item"><div class="fake-m-dot green"></div><span class="fake-m-list-text">Centrale Nord</span><span class="fake-m-list-val">00:12</span></div>
+                  </div>
+                  <div class="fake-m-card"><h4>Alarms</h4><p>3 delivery station alarms active</p></div>
+                  <div class="fake-m-card"><h4>Hand Over</h4><p>Snooze: 15min · 24 alarms</p></div>
+                  <div style="padding:20px;text-align:center;font-size:9px;color:#475569;">NOD v3.2 · TotalEnergies</div>
+                </div>
+              </div>
+            </div>
+            <div class="iphone-home"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECTION 3: VIDEO INTERACTIONS                -->
+  <!-- ============================================ -->
+  <div class="section">
+    <h2 class="section-title">3. Vidéo d'interactions — Comment faire ?</h2>
+    <p class="section-sub">Pour montrer des micro-interactions (hover states, transitions, animations de composants), il te faut de la vidéo. Voici les options.</p>
+
+    <div class="approach-grid">
+      <div class="approach approach-best">
+        <h4>✓ Option A — Vidéo MP4 dans le browser frame</h4>
+        <p>Tu enregistres ton écran (Loom, OBS, macOS Cmd+Shift+5), tu exportes en MP4, et tu remplaces le <code>&lt;img&gt;</code> par un <code>&lt;video autoplay muted loop&gt;</code> dans le browser frame CSS.</p>
+        <p style="margin-top:8px; font-weight:600; color:#166534;">→ Le meilleur rapport effort/impact. Autoplay + loop = le visiteur voit l'interaction sans cliquer.</p>
+      </div>
+      <div class="approach">
+        <h4>Option B — GIF animé</h4>
+        <p>Même enregistrement, mais converti en GIF (via Gifski, CloudConvert). Plus simple à intégrer mais bien plus lourd (5-10x le poids d'une vidéo MP4).</p>
+        <p style="margin-top:8px; color:#92400e;">→ Seulement si tu ne peux pas utiliser &lt;video&gt; (email, Notion).</p>
+      </div>
+      <div class="approach">
+        <h4>Option C — Lottie / animation CSS live</h4>
+        <p>Tu recodes l'interaction directement en CSS/JS dans le portfolio. L'animation est "réelle" dans le browser.</p>
+        <p style="margin-top:8px; color:#555;">→ Le plus impressionnant mais demande beaucoup de travail. Réserve pour 1-2 interactions clé.</p>
+      </div>
+      <div class="approach">
+        <h4>Option D — Prototype Figma embarqué</h4>
+        <p>Tu embarques un prototype Figma en <code>&lt;iframe&gt;</code>. Le visiteur peut interagir directement.</p>
+        <p style="margin-top:8px; color:#555;">→ Cool mais lent au chargement, UX pas toujours fluide, et dépendant de Figma.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>Démo — Vidéo MP4 dans un browser frame</h3>
+        <span class="badge badge-best">Ce que tu dois faire</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Le code est quasi identique au browser frame statique — tu remplaces juste <code>&lt;img&gt;</code> par <code>&lt;video&gt;</code>.</p>
+
+        <div class="demo">
+          <div class="browser-frame" style="width:500px;">
+            <div class="browser-chrome">
+              <div class="browser-dots"><span></span><span></span><span></span></div>
+              <div class="browser-url">app.nod-factory.com/dashboard</div>
+            </div>
+            <div class="video-placeholder">
+              <div class="play-btn"><div class="play-triangle"></div></div>
+              <span>Ta vidéo MP4 ici (autoplay, muted, loop)</span>
+              <span style="font-size:10px; color:#334155;">L'interaction se joue en boucle automatiquement</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-block" data-lang="HTML">
+<span class="c-comment">&lt;!-- Remplace &lt;img&gt; par &lt;video&gt; — c'est tout --&gt;</span>
+
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-val">"browser-frame"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-val">"browser-chrome"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span>
+
+  <span class="c-tag">&lt;video</span>
+    <span class="c-attr">src</span>=<span class="c-val">"./nod-interaction.mp4"</span>
+    <span class="c-attr">autoplay</span>            <span class="c-comment">&lt;!-- joue automatiquement --&gt;</span>
+    <span class="c-attr">muted</span>              <span class="c-comment">&lt;!-- obligatoire pour autoplay --&gt;</span>
+    <span class="c-attr">loop</span>               <span class="c-comment">&lt;!-- boucle infinie --&gt;</span>
+    <span class="c-attr">playsinline</span>        <span class="c-comment">&lt;!-- pas de fullscreen sur mobile --&gt;</span>
+    <span class="c-attr">style</span>=<span class="c-val">"width: 100%; display: block;"</span>
+  <span class="c-tag">&gt;&lt;/video&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span>
+        </div>
+
+        <div class="warn"><strong>Important :</strong> <code>muted</code> est obligatoire pour que <code>autoplay</code> fonctionne sur Chrome et Safari. Sans <code>muted</code>, le navigateur bloque la lecture auto. Et <code>playsinline</code> empêche iOS d'ouvrir la vidéo en plein écran.</div>
+
+        <div class="tip" style="margin-top:12px;"><strong>Workflow recommandé :</strong><br>
+        1. Enregistre ton écran avec <strong>macOS Cmd+Shift+5</strong> (gratuit) ou <strong>OBS</strong> (gratuit)<br>
+        2. Coupe/crope avec <strong>QuickTime</strong> ou <strong>Kapwing</strong> (en ligne)<br>
+        3. Compresse en MP4 H.264 avec <strong>Handbrake</strong> (gratuit) → vise &lt; 2MB<br>
+        4. Place le <code>&lt;video&gt;</code> dans ton browser frame CSS</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECTION 4: DECISION TREE                     -->
+  <!-- ============================================ -->
+  <div class="section">
+    <h2 class="section-title">4. Résumé — Quel format pour quel contenu ?</h2>
+
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Ce que tu montres</th>
+          <th>Format</th>
+          <th>Dans quoi</th>
+          <th>Effort</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Un écran statique (dashboard, page)</td>
+          <td>Image <code>.webp</code></td>
+          <td>Browser frame CSS</td>
+          <td>⚡ 10 min</td>
+        </tr>
+        <tr>
+          <td>Une page longue (scroll)</td>
+          <td>Image longue <code>.webp</code></td>
+          <td>Browser frame + scroll-on-hover CSS</td>
+          <td>⚡ 15 min</td>
+        </tr>
+        <tr style="background:#f0fdf4;">
+          <td><strong>Une micro-interaction (hover, transition)</strong></td>
+          <td><strong>Vidéo <code>.mp4</code></strong></td>
+          <td><strong>Browser frame + <code>&lt;video autoplay loop muted&gt;</code></strong></td>
+          <td><strong>⚡ 20 min</strong></td>
+        </tr>
+        <tr>
+          <td>Un flow complet (multi-écrans)</td>
+          <td>Vidéo <code>.mp4</code></td>
+          <td>Browser ou iPhone frame + video</td>
+          <td>30 min</td>
+        </tr>
+        <tr>
+          <td>Un prototype interactif</td>
+          <td>Figma embed</td>
+          <td><code>&lt;iframe&gt;</code></td>
+          <td>5 min (mais UX lente)</td>
+        </tr>
+        <tr>
+          <td>Version mobile</td>
+          <td>Image ou vidéo</td>
+          <td>iPhone frame CSS</td>
+          <td>⚡ 15 min</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="decision">
+      <h3>Arbre de décision rapide</h3>
+      <div class="decision-flow">
+        <div class="decision-item">
+          <div class="decision-q">C'est une app web / SaaS ?</div>
+          <div class="decision-arrow">→</div>
+          <div class="decision-a">Browser frame <code>.browser-frame</code></div>
+        </div>
+        <div class="decision-item">
+          <div class="decision-q">C'est une app mobile ?</div>
+          <div class="decision-arrow">→</div>
+          <div class="decision-a">iPhone frame <code>.iphone-frame</code></div>
+        </div>
+        <div class="decision-item">
+          <div class="decision-q">La page est longue ?</div>
+          <div class="decision-arrow">→</div>
+          <div class="decision-a">Scroll-on-hover <code>:hover translateY()</code></div>
+        </div>
+        <div class="decision-item">
+          <div class="decision-q">Il y a une animation/interaction ?</div>
+          <div class="decision-arrow">→</div>
+          <div class="decision-a">Vidéo MP4 <code>&lt;video autoplay muted loop&gt;</code></div>
+        </div>
+        <div class="decision-item">
+          <div class="decision-q">Responsive desktop + mobile ?</div>
+          <div class="decision-arrow">→</div>
+          <div class="decision-a">Combo desktop + mobile overlapping</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
