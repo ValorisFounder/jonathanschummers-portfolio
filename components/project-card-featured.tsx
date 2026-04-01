@@ -20,14 +20,19 @@ function FeaturedImage({ project }: { project: Project }) {
     return (
       <BrowserFrame url={project.browserUrl}>
         {isScroll ? (
-          <div className="group/scroll h-[400px] overflow-hidden">
+          <div className="h-[400px] overflow-hidden">
             <Image
               src={project.image}
               alt={project.title}
               width={640}
               height={1200}
-              className="w-full object-cover object-top transition-transform duration-[6000ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover/scroll:[transform:translateY(calc(-100%+400px))]"
+              className="nod-scroll-img w-full object-cover object-top transition-transform duration-[10000ms] ease-[cubic-bezier(0.25,0.1,0.25,1)]"
             />
+            <style>{`
+              .hover-subtle:hover .nod-scroll-img {
+                transform: translateY(calc(-100% + 400px));
+              }
+            `}</style>
           </div>
         ) : (
           <Image

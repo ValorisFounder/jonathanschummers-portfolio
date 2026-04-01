@@ -35,7 +35,7 @@ export function BforBankShowcase() {
       {COLUMNS.map((screens, colIndex) => (
         <div
           key={colIndex}
-          className={`${colIndex >= 2 ? "hidden md:flex" : "flex"} flex-1 flex-col gap-[20px] md:gap-[24px] transition-transform duration-[8000ms] ease-[cubic-bezier(0.25,0.1,0.25,1)]`}
+          className={`${colIndex >= 2 ? "hidden md:flex" : "flex"} flex-1 flex-col gap-[20px] md:gap-[24px] transition-transform duration-[12000ms] ease-[cubic-bezier(0.25,0.1,0.25,1)]`}
           style={{
             transform: `translateY(${INITIAL_OFFSETS[colIndex]}px)`,
           }}
