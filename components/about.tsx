@@ -56,24 +56,24 @@ export function About() {
           </div>
           <div className="mt-lg flex gap-[40px]">
             <IPhoneFrame className="w-[240px] shrink-0">
-              <div className="bg-[#1a1f2e] py-[16px] flex justify-center">
+              <div className="bg-[#0B1013] pt-[16px] pb-[6px]">
                 <Image
                   src="/images/Hero/WattHunter/IMG_6432.webp"
                   alt="WattHunter app screenshot"
-                  width={360}
+                  width={400}
                   height={800}
-                  className="w-[90%] h-auto block"
+                  className="w-full h-auto block"
                 />
               </div>
             </IPhoneFrame>
             <IPhoneFrame className="w-[240px] shrink-0">
-              <div className="bg-[#1a1f2e] py-[16px] flex justify-center">
+              <div className="bg-[#0B1013] pt-[16px] pb-[6px]">
                 <Image
                   src="/images/Hero/WattHunter/IMG_6438.webp"
                   alt="WattHunter app screenshot"
-                  width={360}
+                  width={400}
                   height={800}
-                  className="w-[90%] h-auto block"
+                  className="w-full h-auto block"
                 />
               </div>
             </IPhoneFrame>
