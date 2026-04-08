@@ -16,12 +16,12 @@ export function Hero() {
 
           {/* Tagline — H1 */}
           <h1 className="mt-sm font-display text-h1 font-bold leading-h1 tracking-h2 text-text-primary">
-            Senior product designer with a builder mindset.
+            Freelance product designer for proptech &amp; fintech SaaS.
           </h1>
 
           {/* Subtitle — H2 */}
           <p className="mt-lg font-display text-h2 font-bold leading-h2 tracking-h2 text-text-primary">
-            I research, design, and code.
+            I research, strategize, and design.
           </p>
 
           {/* Body text */}
@@ -29,10 +29,6 @@ export function Hero() {
             <p className="font-body text-body-lg leading-body text-text-primary">
               What drives me: solving hard problems, shipping fast, and
               iterating until it works.
-            </p>
-            <p className="mt-xs font-body text-body-lg leading-body text-text-primary">
-              I focus on fintech startups, the industries I&apos;m passionate
-              about and the ones I understand best.
             </p>
             <p className="mt-sm font-body text-body leading-body text-text-secondary">
               Based in Luxembourg, working remotely.
