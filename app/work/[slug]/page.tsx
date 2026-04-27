@@ -249,7 +249,7 @@ export default async function CaseStudyPage({
               alt={study.frontmatter.title}
               width={1400}
               height={700}
-              className="w-full max-h-[500px] object-cover"
+              className="w-full h-auto"
               priority
             />
           </section>

@@ -55,7 +55,7 @@ Other findings from the 5 user tests:
 - 5/5 users needed to check the logbook page separately to compare ongoing events with current alarms
 - 3/5 users said not processing all plants every morning was a real time saver vs. their previous tool
 
-![User testing in production](/images/Experiences/NOD/Capture%20d'%C3%A9cran%202024-03-07%20%C3%A0%2009.41%201.webp)
+![User testing in production](/images/Experiences/NOD/Capture%20d%E2%80%99%C3%A9cran%202024-03-07%20%C3%A0%2009.41%201.webp)
 
 ### 3. Ran a Design Studio workshop to align the team on solutions
 
@@ -109,9 +109,6 @@ After shipping, 2 more operators switched to laptop screens by choice (6/9 total
 ![NOD 1](/images/Experiences/NOD/NOD%201.webp)
 ![MacBook Air](/images/Experiences/NOD/MacBook%20Air%20-%201%202.webp)
 ![Frame](/images/Experiences/NOD/Frame%201597884570.webp)
-![Screenshot 1](/images/Experiences/NOD/Capture%20d'%C3%A9cran%202024-03-07%20%C3%A0%2009.41%201.webp)
-![Screenshot 2](/images/Experiences/NOD/Capture%20d'%C3%A9cran%202024-03-07%20%C3%A0%2009.41%201-1.webp)
-![Screenshot 3](/images/Experiences/NOD/Capture%20d'%C3%A9cran%202024-07-26%20%C3%A0%2000.16.02%201.webp)
-![image 34](/images/Experiences/NOD/image%2034.webp)
-![image 35](/images/Experiences/NOD/image%2035.webp)
-![image 36](/images/Experiences/NOD/image%2036.webp)
+![Screenshot 1](/images/Experiences/NOD/Capture%20d%E2%80%99%C3%A9cran%202024-03-07%20%C3%A0%2009.41%201.webp)
+![Screenshot 2](/images/Experiences/NOD/Capture%20d%E2%80%99%C3%A9cran%202024-03-07%20%C3%A0%2009.41%201-1.webp)
+![Screenshot 3](/images/Experiences/NOD/Capture%20d%E2%80%99%C3%A9cran%202024-07-26%20%C3%A0%2000.16.02%201.webp)

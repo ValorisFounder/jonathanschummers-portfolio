@@ -66,7 +66,10 @@ function parseMarkdownSections(markdown: string): CaseStudySection[] {
 }
 
 export function getCaseStudy(slug: string): CaseStudy | null {
-  const filePath = path.join(CASE_STUDIES_DIR, `${slug}.md`);
+  /* Prefer the v2 draft if it exists, fall back to the original file */
+  const v2Path = path.join(CASE_STUDIES_DIR, `${slug}-v2.md`);
+  const v1Path = path.join(CASE_STUDIES_DIR, `${slug}.md`);
+  const filePath = fs.existsSync(v2Path) ? v2Path : v1Path;
 
   if (!fs.existsSync(filePath)) {
     return null;
@@ -82,7 +85,7 @@ export function getCaseStudy(slug: string): CaseStudy | null {
 }
 
 /* Only these slugs generate public pages */
-const PUBLISHED_SLUGS = ["bforbank"];
+const PUBLISHED_SLUGS = ["bforbank", "nod", "spie-bat", "smartintegrity"];
 
 export function getAllCaseStudySlugs(): string[] {
   return PUBLISHED_SLUGS;
