@@ -54,8 +54,8 @@ export function About() {
               </p>
             </div>
           </div>
-          <div className="mt-lg flex gap-[40px]">
-            <IPhoneFrame className="w-[240px] shrink-0">
+          <div className="mt-lg flex gap-[40px] max-md:flex-col max-md:gap-md">
+            <IPhoneFrame className="w-[240px] shrink-0 max-md:w-full">
               <div className="bg-[#0B1013] pt-[16px] pb-[6px]">
                 <Image
                   src="/images/Hero/WattHunter/IMG_6432.webp"
@@ -66,7 +66,7 @@ export function About() {
                 />
               </div>
             </IPhoneFrame>
-            <IPhoneFrame className="w-[240px] shrink-0">
+            <IPhoneFrame className="w-[240px] shrink-0 max-md:w-full">
               <div className="bg-[#0B1013] pt-[16px] pb-[6px]">
                 <Image
                   src="/images/Hero/WattHunter/IMG_6438.webp"
