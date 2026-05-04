@@ -185,7 +185,7 @@ function renderStepImages(images: { alt: string; src: string }[]) {
               className="w-full object-cover"
             />
             {img.alt && (
-              <figcaption className="mt-xs font-body text-label text-text-tertiary">
+              <figcaption className="mt-xs font-body text-caption italic font-normal text-text-tertiary">
                 {img.alt}
               </figcaption>
             )}
@@ -195,23 +195,21 @@ function renderStepImages(images: { alt: string; src: string }[]) {
     );
   }
 
-  // 2 images → side by side, same height
+  // 2 images → side by side, natural height
   if (images.length === 2) {
     return (
-      <div className="mt-md grid grid-cols-2 gap-md max-md:grid-cols-1">
+      <div className="mt-md grid grid-cols-2 gap-md items-start max-md:grid-cols-1">
         {images.map((img, i) => (
           <figure key={i}>
-            <div className="h-[240px] overflow-hidden">
-              <Image
-                src={img.src}
-                alt={img.alt}
-                width={420}
-                height={240}
-                className="w-full h-full object-cover object-top"
-              />
-            </div>
+            <Image
+              src={img.src}
+              alt={img.alt}
+              width={420}
+              height={280}
+              className="w-full h-auto"
+            />
             {img.alt && (
-              <figcaption className="mt-xs font-body text-label text-text-tertiary">
+              <figcaption className="mt-xs font-body text-caption italic font-normal text-text-tertiary">
                 {img.alt}
               </figcaption>
             )}
@@ -232,7 +230,7 @@ function renderStepImages(images: { alt: string; src: string }[]) {
         className="w-full h-auto"
       />
       {images[0].alt && (
-        <figcaption className="mt-xs font-body text-label text-text-tertiary">
+        <figcaption className="mt-xs font-body text-caption italic font-normal text-text-tertiary">
           {images[0].alt}
         </figcaption>
       )}
@@ -407,11 +405,7 @@ export default async function CaseStudyPage({
                         !sub.heading.toLowerCase().startsWith(group.label.toLowerCase());
 
                       return (
-                        <div key={subIndex} className={subIndex === 0 ? "mt-md" : "mt-xl2"}>
-                          {subIndex > 0 && (
-                            <hr className="border-t border-border mb-xl2" />
-                          )}
-
+                        <div key={subIndex} className={subIndex === 0 ? "mt-md" : "mt-xl"}>
                           {showHeading && (
                             <h3 className="font-display text-body-lg font-bold leading-body text-text-primary">
                               {sub.heading}
@@ -452,13 +446,11 @@ export default async function CaseStudyPage({
                                   ? "mt-lg"
                                   : stepIdx === 0
                                   ? ""
-                                  : "mt-xl2"
+                                  : "mt-2xl"
                               }
                             >
-                              {stepIdx > 0 && (
-                                <hr className="border-t border-border mb-xl2" />
-                              )}
-                              <h3 className="font-display text-body-lg font-bold leading-body text-text-primary">
+                              {stepIdx > 0 && <hr className="border-t border-border mb-lg" />}
+                              <h3 className="font-display text-h3 font-bold leading-h3 tracking-h3 text-text-primary">
                                 {step.heading}
                               </h3>
                               <div className="mt-xs">{renderContent(step.content)}</div>

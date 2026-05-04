@@ -19,11 +19,11 @@ export const projects: Project[] = [
     title:
       "Revamping a power plant monitoring SaaS to increase kWh tracked per operator by 23%",
     description:
-      "Redesigned the app in dark mode. New diagnostic dashboard for production loss, integrated alerting system, and automated reporting for plant business owners, saving operators 3x30 min per day.",
+      "Redesigned an industrial monitoring SaaS used by 9 control center operators managing 350+ energy assets. Through field observation, usability testing in production, and collaborative co-design workshops, delivered a responsive dashboard that increased kWh tracked per operator by 23%.",
     metric: "+23% kWh/operator",
     company: "TotalEnergies — Digital Factory",
     tags: ["Product Designer", "B2B SaaS", "Energy"],
-    image: "/images/Hero/NOD.webp",
+    image: "/images/Experiences/NOD/Principal.webp",
     type: "featured",
     browserUrl: "nod.com",
     mockupType: "browser-scroll",
