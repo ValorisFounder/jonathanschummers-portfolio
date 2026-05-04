@@ -15,7 +15,7 @@ export function Hero() {
           </p>
 
           {/* Tagline — H1 */}
-          <h1 className="mt-sm font-display text-h1 font-bold leading-h1 tracking-h2 text-text-primary">
+          <h1 className="mt-sm font-display text-h1 font-bold leading-h1 tracking-h1 text-text-primary">
             Freelance product designer (6y+).
           </h1>
 

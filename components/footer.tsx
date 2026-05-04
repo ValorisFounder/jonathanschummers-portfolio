@@ -15,7 +15,7 @@ export function Footer() {
             <a
               key={link.href}
               href={link.href}
-              className="font-body text-body-sm font-medium text-text-secondary transition-colors duration-[var(--dur-fast)] ease-out [@media(hover:hover){&:hover}]:text-text-primary"
+              className="font-body text-body-sm font-medium text-text-secondary transition-colors duration-[var(--dur-fast)] ease-out hover-supported:text-text-primary"
             >
               {link.label}
             </a>
@@ -27,7 +27,7 @@ export function Footer() {
             href="https://linkedin.com/in/jonathanschummers"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-text-secondary transition-colors duration-[var(--dur-fast)] ease-out [@media(hover:hover){&:hover}]:text-text-primary"
+            className="text-text-secondary transition-colors duration-[var(--dur-fast)] ease-out hover-supported:text-text-primary"
             aria-label="LinkedIn"
           >
             <IconLinkedIn size={16} />
@@ -36,7 +36,7 @@ export function Footer() {
             href="https://github.com/jonathanschummers"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-text-secondary transition-colors duration-[var(--dur-fast)] ease-out [@media(hover:hover){&:hover}]:text-text-primary"
+            className="text-text-secondary transition-colors duration-[var(--dur-fast)] ease-out hover-supported:text-text-primary"
             aria-label="GitHub"
           >
             <IconGitHub size={16} />

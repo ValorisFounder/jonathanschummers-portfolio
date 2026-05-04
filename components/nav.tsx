@@ -35,7 +35,7 @@ export function Nav() {
             <a
               key={link.href}
               href={link.href}
-              className="font-body text-body-sm font-semibold text-text-secondary transition-colors duration-[var(--dur-fast)] ease-out [@media(hover:hover){&:hover}]:text-text-primary"
+              className="font-body text-body-sm font-semibold text-text-secondary transition-colors duration-[var(--dur-fast)] ease-out hover-supported:text-text-primary"
             >
               {link.label}
             </a>

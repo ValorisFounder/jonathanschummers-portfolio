@@ -6,14 +6,12 @@ type ButtonSize = "default" | "xl";
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
-  invert?: boolean;
   href?: string;
 }
 
 export function Button({
   variant = "primary",
   size = "default",
-  invert = false,
   className,
   children,
   href,
@@ -30,22 +28,27 @@ export function Button({
     "disabled:cursor-not-allowed disabled:bg-disabled-bg disabled:text-disabled-fg disabled:pointer-events-none"
   );
 
-  const variants: Record<string, string> = {
-    primary: invert
-      ? "bg-invert-bg text-invert-fg [@media(hover:hover){&:hover}]:bg-border-strong [@media(hover:hover){&:hover}]:brightness-108 active:brightness-[1.08]"
-      : "bg-btn-primary text-btn-primary-fg [@media(hover:hover){&:hover}]:bg-btn-primary-hover active:bg-btn-primary-hover active:brightness-[1.08]",
+  const variants: Record<ButtonVariant, string> = {
+    primary:
+      "bg-btn-primary text-btn-primary-fg hover-supported:bg-btn-primary-hover active:bg-btn-primary-hover active:brightness-[1.08]",
     brand:
-      "bg-accent text-white [@media(hover:hover){&:hover}]:bg-accent-hover active:bg-accent-hover active:brightness-[1.08]",
-    outline: invert
-      ? "border border-border-strong text-invert-fg bg-transparent [@media(hover:hover){&:hover}]:bg-invert-fg/10 active:bg-invert-fg/15"
-      : "border border-border-strong text-text-primary bg-transparent [@media(hover:hover){&:hover}]:bg-surface active:bg-border",
+      "bg-accent text-white hover-supported:bg-accent-hover active:bg-accent-hover active:brightness-[1.08]",
+    outline:
+      "border border-border-strong text-text-primary bg-transparent hover-supported:bg-surface active:bg-border",
   };
 
   const cls = cn(base, variants[variant], className);
 
   if (href) {
+    const isExternal = /^https?:\/\//.test(href);
     return (
-      <a href={href} className={cls}>
+      <a
+        href={href}
+        className={cls}
+        {...(isExternal
+          ? { target: "_blank", rel: "noopener noreferrer" }
+          : {})}
+      >
         {children}
       </a>
     );
