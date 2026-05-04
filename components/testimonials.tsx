@@ -9,7 +9,7 @@ export function Testimonials() {
 
       <div className="mt-md flex items-center bg-surface max-md:flex-col max-md:items-stretch">
         <Image
-          src="/images/Hero/Testimonials/sandie.jpeg"
+          src="/images/Hero/Testimonials/sandie.webp"
           alt="Sandie Blanchaud"
           width={157}
           height={191}
