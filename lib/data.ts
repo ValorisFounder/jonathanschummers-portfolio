@@ -49,7 +49,7 @@ export const projects: Project[] = [
       "Designing the onboarding flow that ranked #1 on Google's UX Benchmark 2023",
     description:
       "Built a fully compliant banking onboarding for BforBank's complete app relaunch. Meeting all KYC, security, and regulatory constraints while achieving a full account opening in under 10 minutes.",
-    metric: "#1 Google UX Benchmark 2023",
+    metric: "#1 · Google Finance UX Benchmark 2023 · Meilleur parcours d'entrée en relation",
     company: "BforBank",
     tags: ["UX/UI Designer", "Mobile Design", "Onboarding Flow", "Banking"],
     image: "/images/Hero/BFOR.webp",

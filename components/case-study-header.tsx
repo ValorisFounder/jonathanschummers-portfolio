@@ -56,11 +56,22 @@ export function CaseStudyHeader({
             <div className="mt-md">
               <Image
                 src="/images/Experiences/Bforbank/image%2055.webp"
-                alt="Google UX Benchmark 2023, BforBank ranked #1"
+                alt="Google Finance UX Benchmark 2023, BforBank ranked #1"
                 width={640}
                 height={400}
                 className="w-full object-contain"
               />
+              <p className="mt-xs font-body text-caption italic font-normal text-text-tertiary">
+                Source :{" "}
+                <a
+                  href="https://www.bforbank.com/blog/parlons-vous-et-nous/google-ux-benchmark-bforbank-elue-meilleur-parcours-client"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-text-secondary transition-colors"
+                >
+                  Google Finance UX Benchmark 2023, BforBank
+                </a>
+              </p>
             </div>
           )}
         </div>

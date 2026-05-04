@@ -36,6 +36,8 @@ Lead Designer on the onboarding, supervised by the Head of Design. I worked with
 
 Captured every screen from around 10 bank and neobank onboarding flows, organized in Google Drive folders with a comparative Excel highlighting key differentiators. Since onboarding flows can only be experienced once, this gave the whole team permanent, searchable access to competitor reference material.
 
+![Competitor benchmark](/images/Experiences/Bforbank/representations/benchmark.webp)
+
 ### 2. Mapped every onboarding step with product, compliance, and legal
 
 Defined all required sections (offer selection, phone enrollment, document collection, identity verification, e-signature, additional data entry, card ordering, insurance cross-sell, and adding money) and identified what information each step required and why.
@@ -43,6 +45,11 @@ Defined all required sections (offer selection, phone enrollment, document colle
 ### 3. Designed wireframes focused on one question per screen
 
 The goal wasn't fewer screens: it was making each screen instantly understandable and the overall journey feel fast and intuitive. Each screen presented one clear question with easy-to-reach actions, so users could progress quickly without cognitive overload.
+
+![Situation pro](/images/Experiences/Bforbank/wireframes/situation-pro.webp)
+![Contribuable américain](/images/Experiences/Bforbank/wireframes/us-person.webp)
+![Bien immobilier](/images/Experiences/Bforbank/wireframes/bien-immobilier.webp)
+![Revenus mensuels après impôt](/images/Experiences/Bforbank/wireframes/revenus-mensuels.webp)
 
 ### 4. Ran 3 compliance workshops to reduce upfront information
 
@@ -56,6 +63,9 @@ Built Figma prototypes to run two rounds of user testing. The first tested compr
 
 Collaborated with an external agency on the design system, then applied it to transition all wireframes into production-ready, pixel-perfect screens.
 
+![Wireframe — Sélection de l'offre](/images/Experiences/Bforbank/wireframe-carte-virtuelle.webp)
+![High Fidelity Design](/images/Experiences/Bforbank/IMG_2623.webp)
+
 ## What we delivered
 
 - Complete onboarding journey from wireframes to production-ready UI
@@ -64,12 +74,9 @@ Collaborated with an external agency on the design system, then applied it to tr
 - Figma prototypes and user tests validating step ordering and comprehension
 - A shift in the bank's mindset: users can access the app before verification is complete, managing the wait rather than blocking access
 
-## Images
-
-![Photo 1](/images/Experiences/Bforbank/IMG_2622.webp)
-![Photo 2](/images/Experiences/Bforbank/IMG_2623.webp)
-![Photo 3](/images/Experiences/Bforbank/IMG_2625.webp)
-![Photo 4](/images/Experiences/Bforbank/IMG_2628.webp)
-![Photo 5](/images/Experiences/Bforbank/IMG_2632.webp)
-![Photo 6](/images/Experiences/Bforbank/IMG_2635.webp)
-![Photo 7](/images/Experiences/Bforbank/IMG_2636.webp)
+![BforBank onboarding](/images/Experiences/Bforbank/IMG_2622.webp)
+![BforBank onboarding](/images/Experiences/Bforbank/IMG_2625.webp)
+![BforBank onboarding](/images/Experiences/Bforbank/IMG_2628.webp)
+![BforBank onboarding](/images/Experiences/Bforbank/IMG_2632.webp)
+![BforBank onboarding](/images/Experiences/Bforbank/IMG_2635.webp)
+![BforBank onboarding](/images/Experiences/Bforbank/IMG_2636.webp)

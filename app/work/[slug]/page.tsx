@@ -246,19 +246,21 @@ export default async function CaseStudyPage({
                             <CaseStudyContent text={sub.content} />
                           </div>
 
-                          {/* Section-level images (before steps) */}
-                          <CaseStudyImageGrid images={sub.images} />
+                          {/* Section-level images — skip for bforbank delivered (shown in iPhone grid below) */}
+                          {!(slug === "bforbank" && group.id === "delivered") && (
+                            <CaseStudyImageGrid images={sub.images} />
+                          )}
 
                           {/* BforBank: iPhone grid in delivered section */}
-                          {slug === "bforbank" && group.id === "delivered" && sub.steps.length === 0 && (
-                            <div className="mt-xl grid grid-cols-2 gap-lg max-md:grid-cols-1 mx-auto max-w-[480px]">
+                          {slug === "bforbank" && group.id === "delivered" && sub.images.length > 0 && (
+                            <div className="mt-xl grid grid-cols-3 gap-xl max-md:grid-cols-1">
                               {sub.images.map((img, i) => (
                                 <IPhoneFrame key={i}>
                                   <Image
                                     src={img.src}
                                     alt={img.alt}
-                                    width={300}
-                                    height={650}
+                                    width={390}
+                                    height={844}
                                     className="w-full h-auto block"
                                   />
                                 </IPhoneFrame>
@@ -267,15 +269,67 @@ export default async function CaseStudyPage({
                           )}
 
                           {/* Steps (### subsections) */}
-                          {sub.steps.map((step, stepIdx) => (
-                            <CaseStudyStep
-                              key={stepIdx}
-                              step={step}
-                              stepIndex={stepIdx}
-                              groupId={group.id}
-                              isFirstWithContent={stepIdx === 0 && !!sub.content}
-                            />
-                          ))}
+                          {sub.steps.map((step, stepIdx) => {
+                            const isBforBankStep6 =
+                              slug === "bforbank" &&
+                              group.id === "how" &&
+                              stepIdx === 5 &&
+                              step.images.length === 2;
+
+                            if (isBforBankStep6) {
+                              return (
+                                <div key={stepIdx} className="mt-xl">
+                                  <hr className="border-t border-border/50 mb-xl" />
+                                  <h3 className="font-display text-h3 font-bold leading-h3 tracking-h3 text-text-primary">
+                                    {step.heading}
+                                  </h3>
+                                  <div className="mt-xs">
+                                    <CaseStudyContent text={step.content} />
+                                  </div>
+                                  <div className="mt-lg flex gap-xl justify-center">
+                                    <figure className="flex flex-col">
+                                      <Image
+                                        src={step.images[0].src}
+                                        alt={step.images[0].alt}
+                                        width={390}
+                                        height={844}
+                                        style={{ height: 600, width: "auto" }}
+                                        className="block"
+                                      />
+                                      <figcaption className="mt-xs font-body text-caption italic font-normal text-text-tertiary">
+                                        {step.images[0].alt}
+                                      </figcaption>
+                                    </figure>
+                                    <figure className="flex flex-col">
+                                      <IPhoneFrame>
+                                        <Image
+                                          src={step.images[1].src}
+                                          alt={step.images[1].alt}
+                                          width={390}
+                                          height={844}
+                                          style={{ height: 600, width: "auto" }}
+                                          className="block"
+                                        />
+                                      </IPhoneFrame>
+                                      <figcaption className="mt-xs font-body text-caption italic font-normal text-text-tertiary">
+                                        {step.images[1].alt}
+                                      </figcaption>
+                                    </figure>
+                                  </div>
+                                </div>
+                              );
+                            }
+
+                            return (
+                              <CaseStudyStep
+                                key={stepIdx}
+                                step={step}
+                                stepIndex={stepIdx}
+                                groupId={group.id}
+                                isFirstWithContent={stepIdx === 0 && !!sub.content}
+                              />
+                            );
+                          })}
                         </div>
                       );
                     })}
