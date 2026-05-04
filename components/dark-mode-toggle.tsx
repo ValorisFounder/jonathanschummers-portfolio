@@ -32,7 +32,7 @@ export function DarkModeToggle({ className }: { className?: string }) {
       className={cn(
         "p-xs",
         "text-text-primary transition-colors duration-[var(--dur-fast)] ease-out",
-        "[@media(hover:hover){&:hover}]:text-text-secondary",
+        "hover-supported:text-text-secondary",
         className
       )}
     >

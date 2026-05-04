@@ -54,7 +54,7 @@ export function CtaFinal() {
               href="https://linkedin.com/in/jonathanschummers"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text-secondary transition-colors duration-[var(--dur-fast)] ease-out [@media(hover:hover){&:hover}]:text-text-primary"
+              className="text-text-secondary transition-colors duration-[var(--dur-fast)] ease-out hover-supported:text-text-primary"
               aria-label="LinkedIn"
             >
               <IconLinkedIn size={18} />
@@ -63,7 +63,7 @@ export function CtaFinal() {
               href="https://www.malt.fr/profile/jonathanschummers"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text-secondary transition-colors duration-[var(--dur-fast)] ease-out [@media(hover:hover){&:hover}]:text-text-primary"
+              className="text-text-secondary transition-colors duration-[var(--dur-fast)] ease-out hover-supported:text-text-primary"
               aria-label="Malt"
             >
               <IconMalt size={18} />
@@ -72,14 +72,14 @@ export function CtaFinal() {
               href="https://github.com/jonathanschummers"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text-secondary transition-colors duration-[var(--dur-fast)] ease-out [@media(hover:hover){&:hover}]:text-text-primary"
+              className="text-text-secondary transition-colors duration-[var(--dur-fast)] ease-out hover-supported:text-text-primary"
               aria-label="GitHub"
             >
               <IconGitHub size={18} />
             </a>
             <a
               href="mailto:jonathan.schummers@gmail.com"
-              className="font-body text-body-sm text-text-secondary transition-colors duration-[var(--dur-fast)] ease-out [@media(hover:hover){&:hover}]:text-text-primary"
+              className="font-body text-body-sm text-text-secondary transition-colors duration-[var(--dur-fast)] ease-out hover-supported:text-text-primary"
             >
               jonathan.schummers@gmail.com
             </a>

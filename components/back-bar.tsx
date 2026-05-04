@@ -29,7 +29,7 @@ export function BackBar() {
       <div className="px-xl py-sm max-md:px-md md:max-lg:px-lg">
         <a
           href="/#work"
-          className="inline-flex items-center gap-xs font-body text-body-sm font-semibold text-text-secondary transition-colors duration-[var(--dur-fast)] ease-out [@media(hover:hover){&:hover}]:text-text-primary"
+          className="inline-flex items-center gap-xs font-body text-body-sm font-semibold text-text-secondary transition-colors duration-[var(--dur-fast)] ease-out hover-supported:text-text-primary"
         >
           <ArrowLeftIcon className="size-4" />
           Back to homepage

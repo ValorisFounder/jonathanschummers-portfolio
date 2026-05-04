@@ -44,7 +44,7 @@ export function CaseStudyToc({ items }: { items: TocItem[] }) {
                   "block font-body text-body-sm transition-colors duration-[var(--dur-fast)] ease-out",
                   activeId === item.id
                     ? "text-text-primary font-semibold"
-                    : "text-text-secondary [@media(hover:hover){&:hover}]:text-text-primary"
+                    : "text-text-secondary hover-supported:text-text-primary"
                 )}
               >
                 {item.label}
@@ -61,7 +61,7 @@ export function CaseStudyToc({ items }: { items: TocItem[] }) {
             <li key={item.id}>
               <a
                 href={`#${item.id}`}
-                className="block font-body text-body-sm text-text-secondary transition-colors duration-[var(--dur-fast)] ease-out [@media(hover:hover){&:hover}]:text-text-primary"
+                className="block font-body text-body-sm text-text-secondary transition-colors duration-[var(--dur-fast)] ease-out hover-supported:text-text-primary"
               >
                 {item.label}
               </a>
