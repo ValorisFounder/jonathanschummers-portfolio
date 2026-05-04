@@ -14,13 +14,13 @@ Ranked #1 onboarding out of 51 banks by the 2023 Google UX Benchmark
 
 ## Subtitle
 
-Led the design of BforBank's new customer onboarding — balancing neobank simplicity with traditional banking compliance to create a fast, intuitive acquisition journey.
+Led the design of BforBank's new customer onboarding, balancing neobank simplicity with traditional banking compliance to create a fast, intuitive acquisition journey.
 
 ## Context & Objectives
 
 ### Problem
 
-68% of European consumers abandoned a financial onboarding in 2021 (Signicat, "Battle to Onboard"). BforBank was rebuilding its entire product from scratch — new positioning, branding, app, and offers. The challenge: design an onboarding that feels as fast as a neobank while collecting all the data a real bank legally needs for KYC and fraud detection.
+68% of European consumers abandoned a financial onboarding in 2021 (Signicat, "Battle to Onboard"). BforBank was rebuilding its entire product from scratch: new positioning, branding, app, and offers. The challenge: design an onboarding that feels as fast as a neobank while collecting all the data a real bank legally needs for KYC and fraud detection.
 
 ### Target audience
 
@@ -38,11 +38,11 @@ Captured every screen from around 10 bank and neobank onboarding flows, organize
 
 ### 2. Mapped every onboarding step with product, compliance, and legal
 
-Defined all required sections — offer selection, phone enrollment, document collection, identity verification, e-signature, additional data entry, card ordering, insurance cross-sell, and adding money — and identified what information each step required and why.
+Defined all required sections (offer selection, phone enrollment, document collection, identity verification, e-signature, additional data entry, card ordering, insurance cross-sell, and adding money) and identified what information each step required and why.
 
 ### 3. Designed wireframes focused on one question per screen
 
-The goal wasn't fewer screens — it was making each screen instantly understandable and the overall journey feel fast and intuitive. Each screen presented one clear question with easy-to-reach actions, so users could progress quickly without cognitive overload.
+The goal wasn't fewer screens: it was making each screen instantly understandable and the overall journey feel fast and intuitive. Each screen presented one clear question with easy-to-reach actions, so users could progress quickly without cognitive overload.
 
 ### 4. Ran 3 compliance workshops to reduce upfront information
 
@@ -50,7 +50,7 @@ Worked with legal and compliance to identify which data was truly mandatory at o
 
 ### 5. Prototyped and user-tested step ordering in Figma
 
-Built Figma prototypes to run two rounds of user testing. The first tested comprehension — whether users understood the information being requested. The second tested different step sequences: where to place offer selection (beginning vs. end), whether to group card ordering with insurance cross-sell, and whether to split additional data collection into multiple blocks.
+Built Figma prototypes to run two rounds of user testing. The first tested comprehension: whether users understood the information being requested. The second tested different step sequences: where to place offer selection (beginning vs. end), whether to group card ordering with insurance cross-sell, and whether to split additional data collection into multiple blocks.
 
 ### 6. Applied the design system from wireframes to pixel-perfect UI
 
@@ -62,7 +62,7 @@ Collaborated with an external agency on the design system, then applied it to tr
 - Competitor benchmark documentation covering 10+ banks with every screen captured and organized
 - Reduced upfront data requirements through 3 compliance workshops, deferring non-critical collection to post-onboarding
 - Figma prototypes and user tests validating step ordering and comprehension
-- A shift in the bank's mindset: users can access the app before verification is complete — managing the wait rather than blocking access
+- A shift in the bank's mindset: users can access the app before verification is complete, managing the wait rather than blocking access
 
 ## Images
 

@@ -44,6 +44,10 @@
   --sem-accent-muted: #3670f5;
   --sem-accent-subtle: #d4e3ff;
 
+  /* Layout — case study widths */
+  --sem-case-prose: 640px;    /* colonne contenu (texte, bullets, images) */
+  --sem-case-center: 864px;   /* colonne centrale du layout 3 colonnes */
+
   /* Spacing — base 8px */
   --sem-space-xs: 8px;
   --sem-space-sm: 16px;
@@ -214,6 +218,10 @@
   --spacing-xl2: var(--sem-space-xl2);
   --spacing-3xl: var(--sem-space-3xl);
   --spacing-4xl: var(--sem-space-4xl);
+
+  /* Layout — case study */
+  --width-content: var(--sem-case-prose);
+  --width-center: var(--sem-case-center);
 
   /* Radius */
   --radius-none: var(--sem-radius-none);

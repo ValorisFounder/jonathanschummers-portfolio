@@ -276,10 +276,20 @@ Pattern visuel utilisé pour Testimonials: une **carte `bg-surface` insérée da
 
 ### 8.3 Layout case study
 
-Grille 3 colonnes desktop (≥1024px):
-- Colonne gauche (TOC): `minmax(140px, 1fr)`
-- Colonne centrale (contenu): `minmax(0, 864px)`
-- Colonne droite (vide): `minmax(140px, 1fr)`
+Grille 3 colonnes desktop (≥1280px, breakpoint `xl`) :
+
+| Colonne | Largeur | Token |
+|---|---|---|
+| Gauche (TOC) | `calc((100% - var(--sem-case-center)) / 2)`, min 140px | `--sem-case-center` |
+| Centre (contenu) | max 864px | `--width-center` → `max-w-center` |
+| Droite (symétrie) | identique à gauche | `--sem-case-center` |
+
+**Colonne contenu** : le texte, les images et les bullets sont contraints à 640px max, centré dans la colonne de 864px.
+
+| Token | Valeur | Utilitaire | Usage |
+|---|---|---|---|
+| `--sem-case-prose` | 640px | `max-w-content` | Texte, bullets, captions |
+| `--sem-case-center` | 864px | `max-w-center` | Colonne centrale du layout 3-col |
 
 Les bordures verticales internes (entre TOC et contenu, contenu et droite) délimitent visuellement le rail de 864px.
 
@@ -347,9 +357,37 @@ Un seul pattern de hover dans le projet pour les cards de projet:
 
 ### 9.4 Séparateurs
 
-`1px solid var(--sem-border)`. Utilitaire: `border-border`. Aucun autre style de séparateur.
+`1px solid var(--sem-border)`. Utilitaire: `border-border`. Deux variantes autorisées :
 
-### 9.5 Liens (ghost)
+| Usage | Classes | Quand |
+|---|---|---|
+| Séparateur de section (full-width) | `border-t border-border` | Entre les blocs Context / How / Delivered |
+| Séparateur intra-section (subtil) | `border-t border-border/50` | Entre les steps numérotés dans "How I solved this" |
+
+> `border-border/50` est le seul usage autorisé de l'opacité sur un token de bordure. Ne pas utiliser d'autres valeurs d'opacité.
+
+### 9.5 Liste éditoriale (bullet list case study)
+
+Pattern utilisé dans le renderer markdown des case studies pour les listes `- item`.
+
+```html
+<ul class="mt-sm space-y-xs">
+  <li class="font-body text-body leading-body text-text-primary
+             pl-md relative
+             before:absolute before:left-0 before:top-[0.65em]
+             before:h-[5px] before:w-[5px]
+             before:rounded-full before:bg-text-secondary">
+    Texte du bullet
+  </li>
+</ul>
+```
+
+- Bullet : cercle plein 5×5px, couleur `text-secondary`, aligné à `0.65em` du haut de la ligne
+- Indentation : `pl-md` (24px) pour dégager le bullet
+- Espacement inter-items : `space-y-xs` (8px)
+- Les valeurs `0.65em`, `5px` sont fixes — ne pas tokeniser (dépendent de la taille du corps de texte)
+
+### 9.6 Liens (ghost)
 
 **Un seul style de lien dans le portfolio.**
 
@@ -367,7 +405,7 @@ Un seul pattern de hover dans le projet pour les cards de projet:
 
 > **Liens externes** (Calendly, sites tiers): ouvrir dans un nouvel onglet avec `target="_blank" rel="noopener noreferrer"`.
 
-### 9.6 Focus
+### 9.7 Focus
 
 Outline globale pour `a:focus-visible` et `button:focus-visible`:
 
@@ -378,7 +416,7 @@ a:focus-visible, button:focus-visible {
 }
 ```
 
-### 9.7 Toggle dark mode
+### 9.8 Toggle dark mode
 
 - Position: dans la nav (desktop) et dans le menu burger (mobile)
 - Icône: SVG inline 20×20px (soleil en dark mode, lune en light mode)

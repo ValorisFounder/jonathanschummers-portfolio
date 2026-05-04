@@ -5,12 +5,15 @@ import { Nav } from "@/components/nav";
 import { BlueprintShell } from "@/components/blueprint-shell";
 import { BackBar } from "@/components/back-bar";
 import { CaseStudyToc } from "@/components/case-study-toc";
-import { Tag } from "@/components/tag";
+import { CaseStudyHeader } from "@/components/case-study-header";
+import { CaseStudyStep } from "@/components/case-study-step";
+import { CaseStudyContent } from "@/components/case-study-content";
+import { CaseStudyImageGrid } from "@/components/case-study-image-grid";
 import { Button } from "@/components/button";
 import { Footer } from "@/components/footer";
 import { ArrowUpRightIcon } from "@heroicons/react/16/solid";
 import { getCaseStudy, getAllCaseStudySlugs } from "@/lib/case-studies";
-import type { CaseStudyStep } from "@/lib/case-studies";
+import type { CaseStudyStep as StepData } from "@/lib/case-studies";
 import { projects } from "@/lib/data";
 import { IPhoneFrame } from "@/components/iphone-frame";
 
@@ -50,12 +53,12 @@ interface ProcessedSection {
     heading: string;
     content: string;
     images: { alt: string; src: string }[];
-    steps: CaseStudyStep[];
+    steps: StepData[];
   }[];
 }
 
 function processSections(
-  sections: { heading: string; content: string; images: { alt: string; src: string }[]; steps: CaseStudyStep[] }[]
+  sections: { heading: string; content: string; images: { alt: string; src: string }[]; steps: StepData[] }[]
 ) {
   const headline =
     sections.find((s) => s.heading === "Headline")?.content || "";
@@ -93,150 +96,6 @@ function processSections(
 }
 
 /* Parse **bold** inline markdown */
-function renderInline(text: string): React.ReactNode {
-  const parts = text.split(/(\*\*[^*]+\*\*)/g);
-  return parts.map((part, i) => {
-    if (part.startsWith("**") && part.endsWith("**")) {
-      return <strong key={i}>{part.slice(2, -2)}</strong>;
-    }
-    return part;
-  });
-}
-
-function renderContent(text: string) {
-  const blocks = text.split("\n\n").filter(Boolean);
-
-  return blocks.map((block, i) => {
-    const trimmed = block.trim();
-
-    // Bullet list
-    if (trimmed.startsWith("- ")) {
-      const items = trimmed.split("\n").filter((l) => l.startsWith("- "));
-      return (
-        <ul key={i} className="mt-sm space-y-xs">
-          {items.map((item, j) => (
-            <li
-              key={j}
-              className="font-body text-body leading-body text-text-primary pl-md relative before:absolute before:left-0 before:top-[0.65em] before:h-[5px] before:w-[5px] before:rounded-full before:bg-text-secondary"
-            >
-              {renderInline(item.replace(/^- /, ""))}
-            </li>
-          ))}
-        </ul>
-      );
-    }
-
-    // Numbered list
-    if (/^\d+\.\s/.test(trimmed)) {
-      const items = trimmed.split("\n").filter((l) => /^\d+\.\s/.test(l));
-      return (
-        <ol key={i} className="mt-sm space-y-xs list-decimal pl-md">
-          {items.map((item, j) => (
-            <li
-              key={j}
-              className="font-body text-body leading-body text-text-primary"
-            >
-              {renderInline(item.replace(/^\d+\.\s/, ""))}
-            </li>
-          ))}
-        </ol>
-      );
-    }
-
-    // H3 within content
-    if (trimmed.startsWith("### ")) {
-      return (
-        <h3
-          key={i}
-          className="mt-lg font-display text-h3 font-bold leading-h3 tracking-h3 text-text-primary"
-        >
-          {renderInline(trimmed.replace("### ", ""))}
-        </h3>
-      );
-    }
-
-    // Regular paragraph
-    return (
-      <p
-        key={i}
-        className="mt-sm font-body text-body leading-body text-text-primary"
-      >
-        {renderInline(trimmed)}
-      </p>
-    );
-  });
-}
-
-/* Render images for a step — layout depends on count */
-function renderStepImages(images: { alt: string; src: string }[]) {
-  if (images.length === 0) return null;
-
-  // 4+ images → 4-column row
-  if (images.length >= 4) {
-    return (
-      <div className="mt-lg grid grid-cols-4 gap-sm max-md:grid-cols-2">
-        {images.slice(0, 4).map((img, i) => (
-          <figure key={i}>
-            <Image
-              src={img.src}
-              alt={img.alt}
-              width={200}
-              height={150}
-              className="w-full object-cover"
-            />
-            {img.alt && (
-              <figcaption className="mt-xs font-body text-caption italic font-normal text-text-tertiary">
-                {img.alt}
-              </figcaption>
-            )}
-          </figure>
-        ))}
-      </div>
-    );
-  }
-
-  // 2 images → side by side, natural height
-  if (images.length === 2) {
-    return (
-      <div className="mt-lg grid grid-cols-2 gap-md items-start max-md:grid-cols-1">
-        {images.map((img, i) => (
-          <figure key={i}>
-            <Image
-              src={img.src}
-              alt={img.alt}
-              width={420}
-              height={280}
-              className="w-full h-auto"
-            />
-            {img.alt && (
-              <figcaption className="mt-xs font-body text-caption italic font-normal text-text-tertiary">
-                {img.alt}
-              </figcaption>
-            )}
-          </figure>
-        ))}
-      </div>
-    );
-  }
-
-  // 1 image → full width
-  return (
-    <figure className="mt-lg">
-      <Image
-        src={images[0].src}
-        alt={images[0].alt}
-        width={640}
-        height={400}
-        className="w-full h-auto"
-      />
-      {images[0].alt && (
-        <figcaption className="mt-xs font-body text-caption italic font-normal text-text-tertiary">
-          {images[0].alt}
-        </figcaption>
-      )}
-    </figure>
-  );
-}
 
 export async function generateStaticParams() {
   const slugs = getAllCaseStudySlugs();
@@ -328,62 +187,30 @@ export default async function CaseStudyPage({
         {/* 3-column layout */}
         <div className="flex max-xl:block">
           {/* Left column: TOC */}
-          <div className="hidden xl:block w-[calc((100%-864px)/2)] min-w-[140px] shrink-0 border-r border-border">
+          <div className="hidden xl:block w-[calc((100%-var(--sem-case-center))/2)] min-w-[140px] shrink-0 border-r border-border">
             <div className="sticky top-20 px-xl py-xl">
               <CaseStudyToc items={tocItems} />
             </div>
           </div>
 
           {/* Center column: 864px max */}
-          <div className="flex-1 xl:max-w-[864px]">
+          <div className="flex-1 xl:max-w-center">
             {/* Title + Tags + Key Results */}
             <section className="border-b border-border px-xl py-xl max-md:px-md md:max-xl:px-lg">
-              <div className="mx-auto max-w-[640px]">
-                <h1 className="font-display text-h2 font-bold leading-h2 tracking-h2 text-text-primary">
-                  {project?.title || headline}
-                </h1>
-
-                <div className="mt-md flex flex-wrap gap-sm">
-                  {project?.company && <Tag>{project.company}</Tag>}
-                  <Tag>{study.frontmatter.duration}</Tag>
-                  {study.frontmatter.tags.map((tag) => (
-                    <Tag key={tag}>{tag}</Tag>
-                  ))}
-                </div>
-
-                {subtitle && (
-                  <p className="mt-sm font-body text-body-lg leading-body text-text-secondary">
-                    {subtitle}
-                  </p>
-                )}
-
-                {project?.metric && (
-                  <div className="mt-lg bg-surface px-md py-md">
-                    <p className="font-body text-label font-bold uppercase tracking-label text-text-secondary">
-                      Key results
-                    </p>
-                    <p className="mt-xs font-display text-h3 font-bold leading-h3 text-text-primary">
-                      {project.metric}
-                    </p>
-                    {slug === "bforbank" && (
-                      <div className="mt-md">
-                        <Image
-                          src="/images/Experiences/Bforbank/image%2055.webp"
-                          alt="Google UX Benchmark 2023 — BforBank ranked #1"
-                          width={640}
-                          height={400}
-                          className="w-full object-contain"
-                        />
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
+              <CaseStudyHeader
+                company={project?.company}
+                title={project?.title || headline}
+                duration={study.frontmatter.duration}
+                tags={study.frontmatter.tags}
+                subtitle={subtitle}
+                metric={project?.metric}
+                slug={slug}
+              />
             </section>
 
             {/* Mobile TOC */}
             <div className="py-md px-xl border-b border-border xl:hidden max-md:px-md md:max-xl:px-lg">
-              <div className="mx-auto max-w-[640px]">
+              <div className="mx-auto max-w-content">
                 <CaseStudyToc items={tocItems} />
               </div>
             </div>
@@ -394,7 +221,7 @@ export default async function CaseStudyPage({
                 {groupIndex > 0 && <hr className="border-t border-border" />}
 
                 <div className="px-xl py-xl max-md:px-md md:max-xl:px-lg">
-                  <div className="mx-auto max-w-[640px]">
+                  <div className="mx-auto max-w-content">
                     {/* Section label */}
                     <p className="font-body text-label font-bold uppercase tracking-label text-text-secondary">
                       {group.label}
@@ -416,11 +243,11 @@ export default async function CaseStudyPage({
 
                           {/* Section-level content (before any ### steps) */}
                           <div className={showHeading ? "mt-xs" : ""}>
-                            {renderContent(sub.content)}
+                            <CaseStudyContent text={sub.content} />
                           </div>
 
                           {/* Section-level images (before steps) */}
-                          {renderStepImages(sub.images)}
+                          <CaseStudyImageGrid images={sub.images} />
 
                           {/* BforBank: iPhone grid in delivered section */}
                           {slug === "bforbank" && group.id === "delivered" && sub.steps.length === 0 && (
@@ -441,23 +268,13 @@ export default async function CaseStudyPage({
 
                           {/* Steps (### subsections) */}
                           {sub.steps.map((step, stepIdx) => (
-                            <div
+                            <CaseStudyStep
                               key={stepIdx}
-                              className={
-                                stepIdx === 0 && sub.content
-                                  ? "mt-lg"
-                                  : stepIdx === 0
-                                  ? ""
-                                  : "mt-xl"
-                              }
-                            >
-                              {stepIdx > 0 && group.id === "how" && <hr className="border-t border-border/50 mb-xl" />}
-                              <h3 className="font-display text-h3 font-bold leading-h3 tracking-h3 text-text-primary">
-                                {step.heading}
-                              </h3>
-                              <div className="mt-xs">{renderContent(step.content)}</div>
-                              {renderStepImages(step.images)}
-                            </div>
+                              step={step}
+                              stepIndex={stepIdx}
+                              groupId={group.id}
+                              isFirstWithContent={stepIdx === 0 && !!sub.content}
+                            />
                           ))}
                         </div>
                       );
@@ -471,7 +288,7 @@ export default async function CaseStudyPage({
             <section id="interested">
               <hr className="border-t border-border" />
               <div className="px-xl py-xl max-md:px-md md:max-xl:px-lg">
-                <div className="mx-auto max-w-[640px]">
+                <div className="mx-auto max-w-content">
                   <p className="font-body text-label font-bold uppercase tracking-label text-text-secondary">
                     Book a call
                   </p>
@@ -490,7 +307,7 @@ export default async function CaseStudyPage({
           </div>
 
           {/* Right column: symmetry */}
-          <div className="hidden xl:block w-[calc((100%-864px)/2)] min-w-[140px] shrink-0 border-l border-border" />
+          <div className="hidden xl:block w-[calc((100%-var(--sem-case-center))/2)] min-w-[140px] shrink-0 border-l border-border" />
         </div>
       </BlueprintShell>
       <Footer />

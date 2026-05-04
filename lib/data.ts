@@ -21,7 +21,7 @@ export const projects: Project[] = [
     description:
       "Redesigned an industrial monitoring SaaS used by 9 control center operators managing 350+ energy assets. Through field observation, usability testing in production, and collaborative co-design workshops, delivered a responsive dashboard that increased kWh tracked per operator by 23%.",
     metric: "+23% kWh/operator",
-    company: "TotalEnergies — Digital Factory",
+    company: "TotalEnergies / Digital Factory",
     tags: ["Product Designer", "B2B SaaS", "Energy"],
     image: "/images/Experiences/NOD/Principal.webp",
     type: "featured",
@@ -33,7 +33,7 @@ export const projects: Project[] = [
     title:
       "Designing and building a rental management SaaS for Luxembourg legal compliance",
     description:
-      "Solo-built property management platform automating legal documentation — tax declarations, rent control tracking, and resale reporting. OCR-powered document processing that auto-fills ~72% of required fields for tax filings.",
+      "Solo-built property management platform automating legal documentation: tax declarations, rent control tracking, and resale reporting. OCR-powered document processing that auto-fills ~72% of required fields for tax filings.",
     metric: "~72% of tax fields automated",
     company: "Valoris",
     tags: ["Product Builder", "Cursor / Claude Code", "Entrepreneurship"],
@@ -73,7 +73,7 @@ export const projects: Project[] = [
     title:
       "Reduced refinery pipe leaks by 6% with a corrosion risk tool deployed to 500 inspectors across 4 sites",
     metric: "-6% leaks · 500 users · 4 sites",
-    company: "TotalEnergies — Digital Factory",
+    company: "TotalEnergies / Digital Factory",
     tags: ["Product Design", "Data", "Industry"],
     image: "/images/Hero/SMART.webp",
     type: "compact",

@@ -10,11 +10,11 @@ order: 1
 
 ## Headline
 
--6% leaks in one year — a corrosion risk tool deployed to 500 inspectors across 4 refineries in 3 countries
+-6% leaks in one year: a corrosion risk tool deployed to 500 inspectors across 4 refineries in 3 countries
 
 ## Subtitle
 
-Designed a single tool consolidating corrosion risk data for refinery inspectors — quantifying the impact of operational deviations on corrosion rate so inspections are scheduled where they actually matter.
+Designed a single tool consolidating corrosion risk data for refinery inspectors, quantifying the impact of operational deviations on corrosion rate so inspections are scheduled where they actually matter.
 
 ## Context & Objectives
 
@@ -34,7 +34,7 @@ Sole Product Designer in a Scrum squad: 1 PO, 1 PM, 1 Scrum Master, 1 Tech Lead,
 
 ### 1. Built a product vision tailored to the pilot site, designed to scale
 
-Started by understanding refinery-specific needs — each site has different risks, equipment, and inspection priorities. The challenge was designing a product that worked deeply for the pilot site while keeping enough flexibility to scale to other refineries with their own constraints, rather than landing on a lowest-common-denominator tool.
+Started by understanding refinery-specific needs: each site has different risks, equipment, and inspection priorities. The challenge was designing a product that worked deeply for the pilot site while keeping enough flexibility to scale to other refineries with their own constraints, rather than landing on a lowest-common-denominator tool.
 
 ### 2. Ran 7 user interviews and built one consolidated persona
 
@@ -42,15 +42,15 @@ Mapped the inspector's job through 7 in-depth interviews and built a single pers
 
 ### 3. Co-designed the consolidated risk view with inspectors and data teams
 
-Ran co-design workshops to define how integrity and corrosion data would surface in a single tool. In parallel, worked with data engineers and data scientists to identify which datasets, across 5 existing tools, would feed the new platform — and which models could quantify the impact of IOWs on corrosion rate. This was Smart Integrity's differentiating feature: not just centralization, but a real corrosion-rate prediction.
+Ran co-design workshops to define how integrity and corrosion data would surface in a single tool. In parallel, worked with data engineers and data scientists to identify which datasets, across 5 existing tools, would feed the new platform, and which models could quantify the impact of IOWs on corrosion rate. This was Smart Integrity's differentiating feature: not just centralization, but a real corrosion-rate prediction.
 
 ### 4. Tested and iterated through ~30 user tests across 18 months
 
-Ran roughly 30 user tests across the project, with SUS (System Usability Scale) measurement and basic UX analytics via App Insight. Each iteration tightened the risk-analysis flow — moving from a static dashboard to a tool inspectors actually use multiple times per day.
+Ran roughly 30 user tests across the project, with SUS (System Usability Scale) measurement and basic UX analytics via App Insight. Each iteration tightened the risk-analysis flow, moving from a static dashboard to a tool inspectors actually use multiple times per day.
 
 ### 5. Coordinated rollout across 4 sites in 3 countries
 
-Once the pilot site validated the product, supported the rollout to 3 additional refineries in different countries. Each site required adjustments to reflect local equipment, IOW thresholds, and inspection protocols — without forking the product.
+Once the pilot site validated the product, supported the rollout to 3 additional refineries in different countries. Each site required adjustments to reflect local equipment, IOW thresholds, and inspection protocols, without forking the product.
 
 ## What we delivered
 

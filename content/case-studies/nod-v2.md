@@ -44,17 +44,21 @@ I started by running a Lean UX Canvas workshop with the PO and PM to understand 
 
 I observed operators in their control center and ran usability tests in production with 5 of the 9 users. The goal: does the app actually deliver on the business outcomes we mapped in step 1?
 
-**Operators had to leave the app for almost every diagnosis.** 11 out of 15 diagnostics required connecting to the plant's automation system to get additional information. The alert page had the right concept but didn't surface enough data for a complete diagnosis.
+**Operators had to leave the app for almost every diagnosis.**
 
-**The app wasn't designed for how users actually work.** 4 out of 9 operators used 14-inch laptop screens, not the 40-inch monitors the app was designed for. Scrolling was constant, and key information was hidden below the fold.
+11 out of 15 diagnostics required connecting to the plant's automation system to get additional information. The alert page had the right concept but didn't surface enough data for a complete diagnosis.
+
+**The app wasn't designed for how users actually work.**
+
+4 out of 9 operators used 14-inch laptop screens, not the 40-inch monitors the app was designed for. Scrolling was constant, and key information was hidden below the fold.
 
 Other findings from the 5 user tests:
 
-- 5/5 users handled alarms in order of prioritized losses
-- 13/15 diagnostics had correct root cause identification
-- 4/5 users ignored weather data because they couldn't correlate irradiance with power output
-- 5/5 users needed to check the logbook page separately to compare ongoing events with current alarms
-- 3/5 users said not processing all plants every morning was a real time saver vs. their previous tool
+- **5/5 users** handled alarms in order of prioritized losses
+- **13/15 diagnostics** had correct root cause identification
+- **4/5 users** ignored weather data because they couldn't correlate irradiance with power output
+- **5/5 users** needed to check the logbook page separately to compare ongoing events with current alarms
+- **3/5 users** said not processing all plants every morning was a real time saver vs. their previous tool
 
 ### 3. Ran a Design Studio workshop to align the team on solutions
 
@@ -74,11 +78,12 @@ We converged on three design directions:
 ### 4. Built and tested a first prototype to validate the new design
 
 I designed a first iteration focused on displaying the most relevant diagnostic information above the fold. Key changes:
+
 - Grouped equipment alarms with their parent PTR alarms (shutter system)
 - Separated diagnosis and event creation into two distinct pages
 - Added a two-column logbook preview to show ongoing tickets
 
-Tested with users: 60% of diagnostics could now be completed without leaving the app. But the shutter system went unnoticed (0 users found it), and the logbook needed more space.
+Tested with users: **60% of diagnostics could now be completed without leaving the app.** But **the shutter system went unnoticed (0 users found it)**, and **the logbook needed more space**.
 
 ![Logbook & events page](/images/Experiences/NOD/MacBook%20Air%20-%201%202.webp)
 ![Alert page](/images/Experiences/NOD/NOD%201.webp)
@@ -86,24 +91,22 @@ Tested with users: 60% of diagnostics could now be completed without leaving the
 ### 5. Shipped the second iteration to production and measured results
 
 Based on test feedback, I iterated on the design:
+
 - Made the layout fully responsive with optimized views for both 14" and 40" screens
 - Replaced the shutter with a simpler alarm card that groups all CTAs together
 - Added a weather chart comparing irradiance/wind with production curves
 - Increased font size automatically above 24" screen width
 
-After shipping, 2 more operators switched to laptop screens by choice (6/9 total). Users correctly attributed weather-related alarms for the first time. Zero usability issues in follow-up testing with 4 users.
-
-![Alert page, 14-inch](/images/Experiences/NOD/Principal.webp)
-![Alert page, 40-inch](/images/Experiences/NOD/Frame%201597884570.webp)
+After shipping, **2 more operators switched to laptop screens by choice (6/9 total)**. **Users correctly attributed weather-related alarms for the first time.** **Zero usability issues** in follow-up testing with 4 users.
 
 ## What we delivered
 
-+23% kWh per operator in 12 months, while keeping alert resolution under 45 min.
+### A connected, responsive dashboard for in-app diagnosis, delivering +23% kWh per operator in 12 months.
 
-- Fully responsive dashboard from 14" to 40": 6 of 9 operators switched to laptop screens by choice
-- Diagnostic dashboard with inline alerting data: no more manual connections to plant systems
-- Weather/production correlation charts for faster root cause identification
-- Automated reporting saving 90 min per day per operator
+- Fully responsive from 14" to 40": 6 of 9 operators switched to laptop as default monitor
 - Connected to the industrial network for real-time plant data
+- Majority of diagnostic data inline, reducing manual connections to plant systems
+- Weather/production correlation charts for root cause identification
 
-![NOD dashboard — final version](/images/Experiences/NOD/Principal.webp)
+![Alert page, 14-inch. Screenshot from prod](/images/Experiences/NOD/Principal.webp)
+![Alert page, 40-inch. Screenshot from prod](/images/Experiences/NOD/Frame%201597884570.webp)
