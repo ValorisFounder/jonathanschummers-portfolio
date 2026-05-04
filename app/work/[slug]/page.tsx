@@ -174,7 +174,7 @@ function renderStepImages(images: { alt: string; src: string }[]) {
   // 4+ images → 4-column row
   if (images.length >= 4) {
     return (
-      <div className="mt-md grid grid-cols-4 gap-sm max-md:grid-cols-2">
+      <div className="mt-lg grid grid-cols-4 gap-sm max-md:grid-cols-2">
         {images.slice(0, 4).map((img, i) => (
           <figure key={i}>
             <Image
@@ -198,7 +198,7 @@ function renderStepImages(images: { alt: string; src: string }[]) {
   // 2 images → side by side, natural height
   if (images.length === 2) {
     return (
-      <div className="mt-md grid grid-cols-2 gap-md items-start max-md:grid-cols-1">
+      <div className="mt-lg grid grid-cols-2 gap-md items-start max-md:grid-cols-1">
         {images.map((img, i) => (
           <figure key={i}>
             <Image
@@ -221,7 +221,7 @@ function renderStepImages(images: { alt: string; src: string }[]) {
 
   // 1 image → full width
   return (
-    <figure className="mt-md">
+    <figure className="mt-lg">
       <Image
         src={images[0].src}
         alt={images[0].alt}
@@ -382,8 +382,10 @@ export default async function CaseStudyPage({
             </section>
 
             {/* Mobile TOC */}
-            <div className="py-md px-xl border-b border-border xl:hidden max-md:px-md">
-              <CaseStudyToc items={tocItems} />
+            <div className="py-md px-xl border-b border-border xl:hidden max-md:px-md md:max-xl:px-lg">
+              <div className="mx-auto max-w-[640px]">
+                <CaseStudyToc items={tocItems} />
+              </div>
             </div>
 
             {/* Content sections */}
@@ -446,10 +448,10 @@ export default async function CaseStudyPage({
                                   ? "mt-lg"
                                   : stepIdx === 0
                                   ? ""
-                                  : "mt-2xl"
+                                  : "mt-xl"
                               }
                             >
-                              {stepIdx > 0 && <hr className="border-t border-border mb-lg" />}
+                              {stepIdx > 0 && group.id === "how" && <hr className="border-t border-border/50 mb-xl" />}
                               <h3 className="font-display text-h3 font-bold leading-h3 tracking-h3 text-text-primary">
                                 {step.heading}
                               </h3>
